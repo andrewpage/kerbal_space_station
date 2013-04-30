@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 bundle install
+createuser kerbal_space_station --createdb
+bundle exec rake db:drop db:create db:migrate db:seed
+rails generate figaro:install
 git submodule init
 git submodule update
-bundle exec rake db:drop db:create db:migrate db:seed
 cd public/
-git checkout master
-npm install -g grunt
+npm install -g grunt-cli
 npm install grunt-ember-templates
 grunt
 cd ../
-
+echo -e "Your config/application.yml should look like this:\n"
+echo -e "---\ndevelopment:\n  RAILS_SECRET: \"XXX\"\n  REDIS_URL: \"http://localhost:6379/0\"\ntest:\n  RAILS_SECRET: \"XXX\""
+echo -e "\nReplace XXX with this:"
+rake secret
