@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby -wKU
+
+site 'http://community.opscode.com/api/v1'
+
+# cookbook 'chef-client'
+
+# cookbook 'rvm',
+#   :git => 'https://github.com/fnichol/chef-rvm'
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'nginx'
+cookbook 'memcached'
+cookbook 'redisio'
+cookbook 'sqlite'
+cookbook 'imagemagick'
+cookbook 'phantomjs'
+cookbook 'xml'
+cookbook 'zlib'

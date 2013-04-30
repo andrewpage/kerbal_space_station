@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bundle exec vendorer install
+bundle exec librarian-chef install
+bundle exec vagrant up
