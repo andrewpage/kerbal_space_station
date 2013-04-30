@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby -wKU
+
+folder "vendor/assets" do
+  prefixfreejs = "https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"
+  sugarjs = "https://cdnjs.cloudflare.com/ajax/libs/sugar/1.3.8/sugar.full.dev.js"
+  zxcvbnjs = "https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/1.0/zxcvbn-async.js"
+  chosenjs = "https://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.12/chosen.jquery.js"
+
+  folder "javascripts" do
+    file "prefixfree.js", prefixfreejs
+    file "sugar.js", sugarjs
+    file "zxcvbn-async.js", zxcvbnjs
+    file "chosen.js", chosenjs
+  end
+
+  chosencss = "https://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.12/chosen.css"
+  folder "stylesheets" do
+    file "chosen.css", chosencss
+  end
+
+  chosenpng = "https://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.12/chosen-sprite.png"
+  folder "images" do
+    file "chosen-sprite.png", chosenpng
+  end
+end

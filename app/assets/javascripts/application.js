@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require sugar
+//= require prefixfree
+//= require chosen
+//= require bootstrap
 //= require_tree .
+$(function() {
+  $('.chzn-select').chosen()
+})

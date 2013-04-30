@@ -1,6 +1,9 @@
 KerbalSpaceStation::Application.routes.draw do
   devise_for :accounts
 
-  root to: "pages#splash"
+  resources :mods do
+    resources :photos, only: [:create, :destroy]
+  end
 
+  root to: "pages#splash"
 end

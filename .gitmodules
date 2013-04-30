@@ -1,4 +1,0 @@
-[submodule "public"]
-	path = public
-	url = git://github.com/kerbalspaceprogram/kerbal_space_station-web.git
-	branch = master

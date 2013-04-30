@@ -15,7 +15,7 @@ KerbalSpaceStation::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.delivery_method = :email_spy
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger
@@ -32,10 +32,10 @@ KerbalSpaceStation::Application.configure do
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
-  # config.assets.compress = false
+  config.assets.compress = false
 
   # Expands the lines which load the assets
-  # config.assets.debug = true
+  config.assets.debug = true
 
   config.logger = ActiveSupport::BufferedLogger.new STDOUT
 end

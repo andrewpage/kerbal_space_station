@@ -1,0 +1,4 @@
+<div class="container">
+  <%= render partial: "notification", object: notice, locals: { type: "info" } if notice %>
+  <%= render partial: "notification", object: alert, locals: { type: "error" } if alert %>
+</div>

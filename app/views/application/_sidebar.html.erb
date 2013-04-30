@@ -1,0 +1,7 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Recently Updated Mods</li>
+  <%= render partial: "mods", collection: @updated_mods %>
+  <li class="divider"></li>
+  <li class="nav-header">Newest Mods</li>
+  <%= render partial: "mods", collection: @newest_mods %>
+</ul>

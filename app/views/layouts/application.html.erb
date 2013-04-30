@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: "metadata" %>
+    <%= render partial: "stylesheets" %>
+  </head>
+
+  <body id="<%= controller_name %>#<%= action_name %>">
+    <%= render partial: "header" if view_has_header? %>
+    <% if view_full? %>
+      <div class="container">
+        <article>
+          <%= yield %>
+        </article>
+      </div>
+    <% else %>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span2">
+            <%= render partial: "sidebar" %>
+          </div>
+          <div class="span10">
+            <article>
+              <%= yield %>
+            </article>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= render partial: "footer" if view_has_footer? %>
+    <%= render partial: "analytics" %>
+    <%= render partial: "javascripts" %>
+  </body>
+</html>

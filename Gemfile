@@ -12,6 +12,7 @@ gem "pg", "~> 0.14"
 gem "foreigner", "~> 1.4"
 
 gem "devise", "~> 2.2"
+gem "recommendable", "~> 2.1"
 gem "rack-cors", "~> 0.2", require: "rack/cors"
 gem "strong_parameters", "~> 0.2"
 gem "squeel", "~> 1.0"
@@ -23,8 +24,12 @@ gem "cache_digests", "~> 0.2"
 gem "rmagick", "~> 2.0"
 gem "carrierwave", "~> 0.6"
 gem "tire", "~> 0.4"
-# gem "kaminari", "~> 0.14"
-# gem "kaminari-bootstrap", "~> 0.1"
+gem "simple_form", "~> 2.1"
+gem "kaminari", "~> 0.14"
+gem "kaminari-bootstrap", "~> 0.1"
+gem "filepicker-rails", "~> 0.0"
+gem "kaminari", "~> 0.14"
+gem "kaminari-bootstrap", "~> 0.1"
 # gem "paper_trail", "~> 2.0"
 # gem "authority", "~> 2.0"
 
@@ -97,4 +102,14 @@ group :test do
   gem "poltergeist", "~> 1.1"
   gem "simplecov", "~> 0.7", require: false
   gem "mocha", "~> 0.13"
+end
+
+group :assets do
+  gem "bootstrap-sass", "~> 2.3.1.0"
+  gem "font-awesome-rails", "~> 3.0.2.0"
+  gem "sass-rails", "~> 3.2"
+  gem "asset_sync", "~> 0.5"
+  gem "jquery-rails", "~> 2.0"
+  gem "uglifier", "~> 1.0"
+  gem "yui-compressor", "~> 0.9"
 end

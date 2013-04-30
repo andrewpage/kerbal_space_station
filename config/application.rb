@@ -17,6 +17,7 @@ end
 
 module KerbalSpaceStation
   class Application < Rails::Application
+    require "ksp"
     VERSION = "1.0.0"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -61,14 +62,16 @@ module KerbalSpaceStation
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    # config.assets.enabled = true
+    config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    # config.assets.version = '1.0'
+    config.assets.version = '1.0'
 
     config.generators do |generator|
       generator.test_framework :rspec, view_specs: false
     end
+
+    config.filepicker_rails.api_key = ENV["FILEPICKER_API_KEY"]
 
     # Allow for CORS requests
     config.middleware.use Rack::Cors do

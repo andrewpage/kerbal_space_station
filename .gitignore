@@ -10,6 +10,7 @@
 # Ignore all bundler caching
 /vendor/cache
 /vendor/ruby
+/vendor/assets
 /bin
 
 # Ignore the default SQLite database.
@@ -19,14 +20,23 @@
 /log/*.log
 /tmp
 
-# Ignore foreman details
-/.env
-
-# Ignore documentation directory
-/doc/
-/cookbooks
-
-.vagrant
-
 # Ignore application configuration
 /config/application.yml
+
+# Ignoring the compiled assets
+/public/assets
+
+# Ignore documentation directory
+/doc
+
+# Ignoring provisioning files
+/cookbooks
+/.vagrant
+
+# Ignore vim artifacts
+*.swp
+*.swo
+
+# Ignore pow environment
+.powenv
+.powrc

@@ -1,18 +1,14 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for resource, form_options(registration_path(resource_name)) do |f| %>
+  <legend><h1>Sign Up</h1></legend>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.input :email, autofocus: true, placeholder: "jpublic@example.com" %>
+  <%= f.input :username, placeholder: "jpublic" %>
+  <%= f.input :password, placeholder: "••••••••••" %>
+  <%= f.input :password_confirmation, label: "&nbsp;", placeholder: "••••••••••", hint: "Just to make sure your password is right" %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", class: "btn-primary" %>
+  </div>
+  <%= render "devise/shared/links" %>
 <% end %>
-
-<%= render "devise/shared/links" %>

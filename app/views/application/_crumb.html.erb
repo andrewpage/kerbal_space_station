@@ -1,0 +1,4 @@
+<li class="<%= 'active' if crumb == last %>">
+  <%= if crumb.last then link_to crumb.first, crumb.last else crumb.first end %>
+  <%= content_tag :span, "/", class: "divider"  unless crumb == last %>
+</li>
