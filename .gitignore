@@ -22,9 +22,6 @@
 # Ignore foreman details
 /.env
 
-# Ignoring the client application
-/public
-
 # Ignore documentation directory
 /doc/
 /cookbooks

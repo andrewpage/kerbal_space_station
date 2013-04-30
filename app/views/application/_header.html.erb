@@ -1,0 +1,15 @@
+<header>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">Kerbal Space Station</a>
+      <ul class="nav pull-left">
+        <% unless logged_in? %>
+          <li><%= link_to "Sign Up", new_account_path %></li>
+          <li><%= link_to "Sign In", new_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</header>
