@@ -1,5 +1,6 @@
 class Downloadable < ActiveRecord::Base
   belongs_to :account
+  has_many :images, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :version, presence: true, format: /\d+\.\d+\.\d+/
@@ -10,4 +11,5 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :version
   attr_accessible :compatible
   attr_accessible :upload
+  attr_accessible :images
 end

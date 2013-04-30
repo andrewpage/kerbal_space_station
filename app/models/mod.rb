@@ -1,5 +1,4 @@
 class Mod < Downloadable
-  has_many :photos, dependent: :destroy
 
   validates :install, presence: true
   validates :changelog, presence: true

@@ -45,6 +45,6 @@ class ModsController < ApplicationController
   private
 
   def mod_params
-    params.require(:mod).permit(:name, :description, :install, :version, :compatible, :changelog, :upload, :photos)
+    params.require(:mod).permit(:name, :description, :install, :version, :compatible, :changelog, :upload, :images)
   end
 end

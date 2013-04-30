@@ -8,14 +8,8 @@
   <%= form.input :compatible, label: "Select a KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select" } %>
   <%= form.input :description, input_html: { class: "span8", rows: 6 } %>
   <%= form.input :install, label: "Install Guide", input_html: { class: "span8", rows: 6 } %>
-  <%= form.fields_for :photos do |photo_form| %>
-    <%= photo_form.input :upload, as: :file %>
-  <% end %>
-  <%= form.fields_for :photos do |photo_form| %>
-    <%= photo_form.input :upload, as: :file %>
-  <% end %>
-  <%= form.fields_for :photos do |photo_form| %>
-    <%= photo_form.input :upload, as: :file %>
+  <%= form.fields_for :images do |image_form| %>
+    <%= image_form.input :image, as: :file %>
   <% end %>
   <div class="form-actions">
     <%= form.filepicker_field :upload, services: ["COMPUTER"], button_text: "Upload zip", drag_text: "Drop your zip file here.", button_class: "btn btn-success" %>
