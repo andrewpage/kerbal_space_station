@@ -71,6 +71,8 @@ module KerbalSpaceStation
       generator.test_framework :rspec, view_specs: false
     end
 
+    config.assets.prefix = "/assets/#{Rails.env}"
+
     config.filepicker_rails.api_key = ENV["FILEPICKER_API_KEY"]
 
     # Allow for CORS requests
