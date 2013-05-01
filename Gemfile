@@ -103,8 +103,8 @@ group :test do
 end
 
 group :assets do
-  gem "bootstrap-sass", "~> 2.3.1.0"
-  gem "font-awesome-rails", "~> 3.0.2.0"
+  gem "bootstrap-sass", "~> 2.3"
+  gem "font-awesome-rails", "~> 3.0"
   gem "sass-rails", "~> 3.2"
   gem "asset_sync", "~> 0.5"
   gem "jquery-rails", "~> 2.0"
