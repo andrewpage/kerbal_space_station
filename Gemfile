@@ -68,7 +68,6 @@ group :development do
   gem "terminal-notifier-guard", "~> 1.5"
 
   # Debuggers
-  gem "letters", "~> 0.3"
   gem "pry", "~> 0.9"
   gem "pry-rails", "~> 0.1"
   gem "pry-remote", "~> 0.1"
