@@ -6,7 +6,7 @@ if defined?(AssetSync)
     config.aws_secret_access_key = ENV["AMAZON_S3_SECRET"]
 
     # Increase upload performance by configuring your region
-    # config.fog_region = 'eu-west-1'
+    config.fog_region = "us-west-2"
     #
     # Don't delete files from the store
     config.existing_remote_files = ENV["ASSET_SYNC_EXISTING_REMOTE_FILES"]
