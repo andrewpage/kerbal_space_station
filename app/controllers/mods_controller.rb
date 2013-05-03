@@ -27,6 +27,7 @@ class ModsController < ApplicationController
       @mod.errors.full_messages.each do |error|
         Rails.logger.warn("\n  * #{error}")
       end
+      @mod.images = (1..3).map { @mod.images.build }
       render(:new)
     end
   end
