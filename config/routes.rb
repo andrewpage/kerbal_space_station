@@ -12,5 +12,7 @@ KerbalSpaceStation::Application.routes.draw do
     end
   end
 
+  get "/search" => "pages#search"
+
   root to: "pages#splash"
 end
