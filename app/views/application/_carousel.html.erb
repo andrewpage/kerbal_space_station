@@ -1,0 +1,6 @@
+<div id="carousel" class="carousel slide">
+  <%= carousel_indicators(images) %>
+  <%= render partial: "carousel_inner", locals: { images: images } %>
+  <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+</div>

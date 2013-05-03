@@ -1,0 +1,10 @@
+<div class="caption">
+  <h3><%= link_to thumbnail_caption.name, thumbnail_caption %></h3>
+  <p><%= thumbnail_caption.description.truncate(150) %></p>
+  <div class="btn-group">
+    <%= button_to icon_tag("download") + " Download", "download_mod_path" %>
+    <%= button_to icon_tag("thumbs-up"), "upvote_mod_path", tooltip("Upvote") %>
+    <%= button_to icon_tag("thumbs-down"), "downvote_mod_path", tooltip("Downvote") %>
+    <%= button_to icon_tag("bookmark"), "bookmark_mod_path", tooltip("Bookmark") %>
+  </p>
+</div>
