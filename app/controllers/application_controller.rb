@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
 
   def favorited_mods
     Account
-    @favorited_mods = Mod.top(10)
+    @favorited_mods = Mod.top(10).decorate
   end
 
   def updated_mods
-    @updated_mods = Mod.order(:updated_at).limit(10)
+    @updated_mods = Mod.order(:updated_at).limit(10).decorate
   end
 
   def newest_mods
-    @newest_mods = Mod.order(:created_at).limit(10)
+    @newest_mods = Mod.order(:created_at).limit(10).decorate
   end
 end
