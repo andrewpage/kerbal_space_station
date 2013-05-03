@@ -67,4 +67,12 @@ module ApplicationHelper
   def modal_link_to(text, path, options = {})
     link_to text, path, options.merge!(data: { toggle: "modal" })
   end
+
+  def tooltip(title)
+    { data: toggle("tooltip"), title: title }
+  end
+
+  def toggle(type)
+    { toggle: type }
+  end
 end
