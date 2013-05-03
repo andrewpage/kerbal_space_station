@@ -1,4 +1,6 @@
 class ModsController < ApplicationController
+  VALID_MOD_KEYS = [:name, :upload, :images, :install, :description, :changelog, :version, :compatible]
+
   def index
     @mods = Mod.order(:created_at)
   end
@@ -12,7 +14,7 @@ class ModsController < ApplicationController
   end
 
   def create
-    @mod = Mod.new mod_params
+    @mod = Mod.new params[:mod].slice(*VALID_MOD_KEYS)
     if @mod.valid?
       @mod.save!
       redirect_to @mod
@@ -27,7 +29,7 @@ class ModsController < ApplicationController
 
   def update
     @mod = Mod.find(params[:id])
-    @mod.assign_attributes(mod_params)
+    @mod.assign_attributes(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
       @mod.save!
       redirect_to @mod
@@ -42,9 +44,4 @@ class ModsController < ApplicationController
     redirect :back
   end
 
-  private
-
-  def mod_params
-    params.require(:mod).permit(:name, :description, :install, :version, :compatible, :changelog, :upload, :images)
-  end
 end
