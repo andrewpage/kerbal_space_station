@@ -11,6 +11,7 @@ class ModsController < ApplicationController
 
   def new
     @mod = Mod.new
+    3.times { @mod.images.build }
   end
 
   def create
@@ -43,5 +44,4 @@ class ModsController < ApplicationController
     @mod.destroy
     redirect :back
   end
-
 end
