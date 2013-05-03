@@ -1,6 +1,7 @@
 KerbalSpaceStation::Application.routes.draw do
   devise_for :accounts
 
+  resources :downloadables
   resources :mods do
     member do
       get :download
