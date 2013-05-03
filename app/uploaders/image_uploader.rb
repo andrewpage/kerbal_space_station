@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   # Including optimizing features
-  include CarrierWave::ImageOptimizer
+  # include CarrierWave::ImageOptimizer
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   process :resize_to_fit => [800, 600]
-  process :optimize
+  # process :optimize
 
   # Create different versions of your uploaded files:
   version :medium do
