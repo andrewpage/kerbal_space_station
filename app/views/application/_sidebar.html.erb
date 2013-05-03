@@ -1,4 +1,6 @@
-<ul class="nav nav-list">
+<ul class="nav nav-list well">
+  <li><%= link_to "New Mod", new_mod_path %></li>
+  <li class="divider"></li>
   <li class="nav-header">Recently Updated Mods</li>
   <%= render partial: "mods", collection: @updated_mods %>
   <li class="divider"></li>
