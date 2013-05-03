@@ -3196,7 +3196,7 @@ button.close {
   *margin-left: .3em;
   font-size: 14px;
   line-height: 20px;
-  color: #999999;
+  color: #555;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
@@ -3231,8 +3231,8 @@ button.close {
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-  color: #999999;
-  background-color: #c8c8c8;
+  color: #6E6E6E;
+  background-color: #4B4B4B;
   *background-color: #bbbbbb;
 }
 
@@ -4870,7 +4870,6 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inverse .navbar-search .search-query {
   color: #ffffff;
-  background-color: #80bfff;
   border-color: #007fff;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
      -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);

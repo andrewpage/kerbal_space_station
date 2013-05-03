@@ -1,18 +1,16 @@
 <header>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="/">Kerbal Space Station</a>
-        <ul class="nav pull-left">
-          <%= item :li, controller_name == "mods" do %>
-            <%= link_to "Mods", mods_path %>
-          <% end %>
-        </ul>
-        <ul class="nav pull-right">
-          <%= render partial: "header_search" %>
-          <%= render partial: "header_authentication" %>
-        </ul>
-      </div>
+      <a class="brand" href="/">Kerbal Space Station</a>
+      <ul class="nav pull-left">
+        <%= item :li, controller_name == "mods" do %>
+          <%= link_to "Mods", mods_path %>
+        <% end %>
+      </ul>
+      <ul class="nav pull-right">
+        <%= render partial: "header_search" %>
+        <%= render partial: "header_authentication" %>
+      </ul>
     </div>
   </nav>
   <%= render partial: "notifications" %>
