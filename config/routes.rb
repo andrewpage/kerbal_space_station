@@ -2,7 +2,14 @@ KerbalSpaceStation::Application.routes.draw do
   devise_for :accounts
 
   resources :mods do
-    resources :photos, only: [:create, :destroy]
+    member do
+      get :download
+      get :ignore
+      get :bookmark
+      get :like
+      get :dislike
+      get :report
+    end
   end
 
   root to: "pages#splash"
