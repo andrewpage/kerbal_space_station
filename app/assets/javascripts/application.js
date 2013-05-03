@@ -16,5 +16,6 @@
 //= require_tree .
 
 $(function() {
-  $('.chzn-select').chosen()
+  $('[data-toggle=tooltip]').tooltip();
+  $('.chzn-select').chosen();
 })
