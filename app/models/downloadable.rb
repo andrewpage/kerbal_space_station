@@ -13,5 +13,5 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :version
   attr_accessible :compatible
   attr_accessible :upload
-  attr_accessible :images
+  attr_accessible :images, :images_attributes
 end
