@@ -1,9 +1,9 @@
 <ul class="nav nav-list well">
-  <li><%= link_to "New Mod", new_mod_path %></li>
-  <li class="divider"></li>
   <li class="nav-header">Recently Updated Mods</li>
-  <%= render partial: "mods", collection: @updated_mods %>
+  <%= render partial: "sidebar_mod", collection: @updated_mods %>
   <li class="divider"></li>
   <li class="nav-header">Newest Mods</li>
-  <%= render partial: "mods", collection: @newest_mods %>
+  <%= render partial: "sidebar_mod", collection: @newest_mods %>
+  <li class="divider"></li>
+  <%= render partial: "sidebar_account_mods" if account_signed_in? %>
 </ul>
