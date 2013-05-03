@@ -1,18 +1,34 @@
 module ApplicationHelper
   def view_title(title)
-    "Kerbal Space Station"
+    if title.present?
+      "Kerbal Space Station - #{title}"
+    else
+      "Kerbal Space Station"
+    end
   end
 
   def view_description(description)
-
+    if description.present?
+      "Kerbal Space Station is a free and open community for KSP mods. #{desription}"
+    else
+      "Kerbal Space Station is a free and open community for KSP mods."
+    end
   end
 
-  def view_keywords(keywords)
-
+  def view_keywords(keywords = [])
+    if keywords.any?
+      ["Kerbal Space Program", "Game", "Mods", "Ships"] + keywords
+    else
+      ["Kerbal Space Program", "Game", "Mods", "Ships"]
+    end.join(", ")
   end
 
-  def view_author(authors)
-
+  def view_author(authors = [])
+    if authors.any?
+      ["Kurtis Rainbolt-Greene (@krainboltgreene)"] + authors
+    else
+      ["Kurtis Rainbolt-Greene (@krainboltgreene)"]
+    end.join(", ")
   end
 
   def view_has_header?
@@ -28,11 +44,11 @@ module ApplicationHelper
   end
 
   def view_analytics_account
-
+    "UA-18715035-6"
   end
 
   def view_analytics_domain
-
+    "kerbal-space-station.herokuapp.com"
   end
 
   def form_options(url = nil, as = resource_name)
