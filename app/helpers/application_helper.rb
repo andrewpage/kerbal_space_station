@@ -35,10 +35,6 @@ module ApplicationHelper
 
   end
 
-  def icon_tag(icon, options = {})
-    content_tag :i, nil, options.merge(class: "icon-#{icon} #{options[:class]}")
-  end
-
   def form_options(url = nil, as = resource_name)
     {
       as: as,
@@ -58,6 +54,10 @@ module ApplicationHelper
         class: "form-horizontal"
       }
     }
+  end
+
+  def icon_tag(icon, options = {})
+    raw content_tag :i, nil, options.merge(class: "icon-#{icon} #{options[:class]}")
   end
 
   def button_to(text, path, options = {})
