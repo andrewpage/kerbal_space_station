@@ -1,5 +1,5 @@
 class ModsController < ApplicationController
-  VALID_MOD_KEYS = [:name, :upload, :images, :install, :description, :changelog, :version, :compatible]
+  VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible]
 
   def index
     @mods = Mod.order(:created_at)
