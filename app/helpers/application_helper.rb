@@ -76,6 +76,10 @@ module ApplicationHelper
     raw content_tag :i, nil, options.merge(class: "icon-#{icon} #{options[:class]}")
   end
 
+  def caret_tag
+    content_tag(:span, nil, class: "caret")
+  end
+
   def button_to(text, path, options = {})
     link_to text, path, options.merge!(class: "btn #{options[:class]}")
   end
