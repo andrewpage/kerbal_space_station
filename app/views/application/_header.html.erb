@@ -7,9 +7,6 @@
           <%= item :li, controller_name == "mods" do %>
             <%= link_to "Mods", mods_path %>
           <% end %>
-          <%= item :li, controller_name == "ships" do %>
-            <%= link_to "Ships", "ships_path" %>
-          <% end %>
         </ul>
         <ul class="nav pull-right">
           <%= render partial: "header_search" %>
