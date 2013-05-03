@@ -3,12 +3,14 @@
     <%= link_to thumbnail_caption.name, thumbnail_caption %>
   </h3>
   <p><%= thumbnail_caption.description(150) %></p>
-  <div class="btn-group">
-    <%= button_to icon_tag("download") + " Download", download_mod_path(thumbnail_caption), class: "btn-primary" %>
-    <% if account_signed_in? %>
-      <%= button_to icon_tag("thumbs-up"), like_mod_path(thumbnail_caption), tooltip("Like").merge(class: thumbnail_caption.liked_style) %>
-      <%= button_to icon_tag("bookmark"), bookmark_mod_path(thumbnail_caption), tooltip("Bookmark").merge(class: thumbnail_caption.bookmarked_style) %>
-      <%= button_to icon_tag("flag"), report_mod_path(thumbnail_caption), tooltip("Report") %>
-    <% end %>
+  <div class="btn-group-wrap">
+    <div class="btn-group">
+      <%= button_to icon_tag("download") + " Download", download_mod_path(thumbnail_caption), class: "btn-primary" %>
+      <% if account_signed_in? %>
+        <%= button_to icon_tag("thumbs-up"), like_mod_path(thumbnail_caption), tooltip("Like").merge(class: thumbnail_caption.liked_style) %>
+        <%= button_to icon_tag("bookmark"), bookmark_mod_path(thumbnail_caption), tooltip("Bookmark").merge(class: thumbnail_caption.bookmarked_style) %>
+        <%= button_to icon_tag("flag"), report_mod_path(thumbnail_caption), tooltip("Report") %>
+      <% end %>
+    </div>
   </div>
 </div>
