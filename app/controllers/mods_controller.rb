@@ -20,7 +20,10 @@ class ModsController < ApplicationController
       @mod.save!
       redirect_to(@mod)
     else
-      render :new
+      Rails.logger.warn("Something went wrong:")
+      @mod.errors.full_messages.each do |error|
+        Rails.logger.warn("\n  * #{error}")
+      end
       render(:new)
     end
   end
