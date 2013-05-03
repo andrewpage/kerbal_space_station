@@ -34,7 +34,7 @@
     </li>
     <% @mod.images.map(&:image).each do |image| %>
       <li class="span3"><%= thumblink image_tag image %>
-    <% end %>
+    <% end if @mod.images.any? %>
   </ul>
   <ul class="nav nav-tabs">
     <li class="active">
