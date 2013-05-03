@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def view_analytics_account
-    "UA-18715035-6"
+    ENV["ANALYTICS_KEY"]
   end
 
   def view_analytics_domain
