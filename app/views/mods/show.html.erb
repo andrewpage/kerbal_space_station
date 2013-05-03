@@ -12,9 +12,11 @@
       <%= button_to "Version #{@mod.version} #{caret_tag}", "#", class: "disabled" %>
       <%= button_to "KSP #{@mod.compatible} #{caret_tag}", "#", class: "disabled" %>
       <%= button_to icon_tag("download") + " Download", download_mod_path(@mod) %>
-      <%= button_to icon_tag("thumbs-up") + " Like", like_mod_path(@mod), class: @mod.liked_style %>
-      <%= button_to icon_tag("thumbs-down") + " Dislike", dislike_mod_path(@mod), class: @mod.disliked_style %>
-      <%= button_to icon_tag("bookmark") + " Bookmark", bookmark_mod_path(@mod), class: @mod.bookmarked_style %>
+      <% if account_signed_in? %>
+        <%= button_to icon_tag("thumbs-up") + " Like", like_mod_path(@mod), class: @mod.liked_style %>
+        <%= button_to icon_tag("thumbs-down") + " Dislike", dislike_mod_path(@mod), class: @mod.disliked_style %>
+        <%= button_to icon_tag("bookmark") + " Bookmark", bookmark_mod_path(@mod), class: @mod.bookmarked_style %>
+      <% end %>
     </div>
   </div>
   <br><br><br>
