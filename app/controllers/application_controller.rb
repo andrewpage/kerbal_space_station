@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :load_account
   before_filter :favorited_mods
   before_filter :updated_mods
   before_filter :newest_mods
@@ -6,8 +7,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def favorited_mods
+  def load_account
     Account
+  end
+
+  def favorited_mods
     @favorited_mods = ModDecorator.decorate(Mod.top(10))
   end
 
