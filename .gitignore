@@ -25,6 +25,7 @@
 
 # Ignoring the compiled assets
 /public/assets
+/public/uploads
 
 # Ignore documentation directory
 /doc
