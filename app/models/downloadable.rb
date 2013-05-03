@@ -14,4 +14,5 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :compatible
   attr_accessible :upload
   attr_accessible :images, :images_attributes
+  attr_accessible :download_count, :bookmark_count
 end

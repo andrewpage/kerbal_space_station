@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430051917) do
+ActiveRecord::Schema.define(:version => 20130503100320) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -52,13 +52,17 @@ ActiveRecord::Schema.define(:version => 20130430051917) do
     t.text     "changelog"
     t.text     "install"
     t.integer  "account_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "upload"
+    t.integer  "download_count"
+    t.integer  "bookmark_count", :default => 0
   end
 
   add_index "downloadables", ["account_id"], :name => "index_downloadables_on_account_id"
+  add_index "downloadables", ["bookmark_count"], :name => "index_downloadables_on_bookmark_count"
   add_index "downloadables", ["compatible"], :name => "index_downloadables_on_compatible"
+  add_index "downloadables", ["download_count"], :name => "index_downloadables_on_download_count"
   add_index "downloadables", ["name"], :name => "index_downloadables_on_name"
   add_index "downloadables", ["upload"], :name => "index_downloadables_on_upload"
   add_index "downloadables", ["version"], :name => "index_downloadables_on_version"
