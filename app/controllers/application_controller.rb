@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def favorited_mods
     Account
-    @favorited_mods = Mod.top(10).decorate
+    @favorited_mods = ModDecorator.decorate(Mod.top(10))
   end
 
   def updated_mods
