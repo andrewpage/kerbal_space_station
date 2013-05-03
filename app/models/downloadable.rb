@@ -1,6 +1,6 @@
 class Downloadable < ActiveRecord::Base
   belongs_to :account
-  has_many :images, dependent: :destroy
+  has_many :images, dependent: :destroy, order: :id
 
   accepts_nested_attributes_for :images
 
