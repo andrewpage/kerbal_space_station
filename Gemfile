@@ -13,7 +13,6 @@ gem "foreigner", "~> 1.4"
 gem "devise", "~> 2.2"
 gem "recommendable", "~> 2.1"
 gem "rack-cors", "~> 0.2", require: "rack/cors"
-gem "strong_parameters", "~> 0.2"
 gem "squeel", "~> 1.0"
 gem "draper", "~> 1.1"
 gem "active_model_serializers", "~> 0.6"
@@ -36,7 +35,6 @@ gem "kaminari-bootstrap", "~> 0.1"
 group :production, :staging do
   gem "dalli", "~> 2.0"
   gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
-  # gem "sendgrid-rails", "~> 2.0"
   gem "newrelic_rpm", "~> 3.0"
 end
 
