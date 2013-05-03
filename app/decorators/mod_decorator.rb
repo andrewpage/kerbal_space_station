@@ -6,6 +6,6 @@ class ModDecorator < Draper::Decorator
   end
 
   def description(limit)
-    h.raw Markdowner.new(source.description.truncate(250)).render!
+    h.raw Markdowner.new(source.description.truncate(limit)).render!
   end
 end
