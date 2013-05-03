@@ -29,6 +29,7 @@ gem "kaminari-bootstrap", "~> 0.1"
 gem "filepicker-rails", "~> 0.0"
 gem "kaminari", "~> 0.14"
 gem "kaminari-bootstrap", "~> 0.1"
+gem "redcarpet", "~> 2.2"
 # gem "paper_trail", "~> 2.0"
 # gem "authority", "~> 2.0"
 
