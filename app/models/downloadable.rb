@@ -24,6 +24,8 @@ class Downloadable < ActiveRecord::Base
     indexes :description # analyzer: 'snowball'
   end
 
+  index_name INDEX_NAME
+
   def self.search(q)
     tire.search(load: true) do
       query { string q, default_operator: "AND" } if q.present?
