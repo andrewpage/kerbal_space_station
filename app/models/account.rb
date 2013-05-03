@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
   has_many :downloadables
   has_many :mods
 
-  recommends :mods
+  recommends :downloadables
 
   validates :email, uniqueness: true
   validates :username, uniqueness: true

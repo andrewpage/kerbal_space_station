@@ -1,4 +1,7 @@
 class Downloadable < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
   belongs_to :account
   has_many :images, dependent: :destroy, order: :id
 
@@ -15,4 +18,15 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :upload
   attr_accessible :images, :images_attributes
   attr_accessible :download_count, :bookmark_count
+
+  mapping do
+    indexes :name, boost: 10
+    indexes :description # analyzer: 'snowball'
+  end
+
+  def self.search(q)
+    tire.search(load: true) do
+      query { string q, default_operator: "AND" } if q.present?
+    end
+  end
 end

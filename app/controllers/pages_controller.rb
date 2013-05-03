@@ -7,7 +7,6 @@ class PagesController < ApplicationController
   end
 
   def search
-    flash[:alert] = "Sorry, we haven't implemented that feature yet."
-    redirect_to :back
+    @downloadables = ModDecorator.decorate_collection(Mod.search(params[:q]).to_a)
   end
 end
