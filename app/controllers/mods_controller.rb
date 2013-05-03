@@ -2,11 +2,11 @@ class ModsController < ApplicationController
   VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible]
 
   def index
-    @mods = Mod.order(:created_at)
+    @mods = Mod.order(:created_at).decorate
   end
 
   def show
-    @mod = Mod.find(params[:id])
+    @mod = Mod.find(params[:id]).decorate
   end
 
   def new
