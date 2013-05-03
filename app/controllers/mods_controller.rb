@@ -44,7 +44,7 @@ class ModsController < ApplicationController
   end
 
   def destroy
-    @mod = Mod.find(params[:id])
+    @mod = current_user.mods.find(params[:id])
     @mod.destroy
     redirect :back
   end
