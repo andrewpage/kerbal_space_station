@@ -5,7 +5,7 @@ class ModDecorator < Draper::Decorator
     images.first.image
   end
 
-  def description(limit)
+  def description(limit = 10_000)
     h.raw Markdowner.new(source.description.truncate(limit)).render!
   end
 end

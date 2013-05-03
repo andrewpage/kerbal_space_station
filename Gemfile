@@ -35,6 +35,7 @@ gem "redcarpet", "~> 2.2"
 
 group :production, :staging do
   gem "dalli", "~> 2.0"
+  gem "memcachier", "~> 0.0.2"
   gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
   gem "newrelic_rpm", "~> 3.0"
 end
