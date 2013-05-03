@@ -1,4 +1,6 @@
 class ModsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible]
 
   def index
