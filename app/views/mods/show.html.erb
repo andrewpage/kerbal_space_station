@@ -26,6 +26,12 @@
       <li class="span3"><%= thumblink image_tag image %>
     <% end %>
   </ul>
+  <p class="text-info well" style="text-align: center;">
+    <%= @mod.liked_by_count %> Likes /
+    <%= @mod.disliked_by_count %> Dislikes /
+    <%= @mod.bookmark_count %> Bookmarks /
+    <%= @mod.download_count %> Downloads
+  </p>
   <ul class="nav nav-tabs">
     <li class="active">
       <%= link_to "Description", "#description", data: toggle("tab") %>
