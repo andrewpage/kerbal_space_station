@@ -2,6 +2,8 @@ class Downloadable < ActiveRecord::Base
   belongs_to :account
   has_many :images, dependent: :destroy
 
+  accepts_nested_attributes_for :images
+
   validates :name, presence: true, uniqueness: true
   validates :version, presence: true, format: /\d+\.\d+\.\d+/
   validates :compatible, presence: true
