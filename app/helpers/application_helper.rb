@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def view_keywords(keywords = [])
-    if keywords.any?
+    if keywords.try(:any?)
       ["Kerbal Space Program", "Game", "Mods", "Ships"] + keywords
     else
       ["Kerbal Space Program", "Game", "Mods", "Ships"]
@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def view_author(authors = [])
-    if authors.any?
+    if authors.try(:any?)
       ["Kurtis Rainbolt-Greene (@krainboltgreene)"] + authors
     else
       ["Kurtis Rainbolt-Greene (@krainboltgreene)"]
