@@ -17,7 +17,7 @@ class ModsController < ApplicationController
   end
 
   def create
-    @mod = current_user.mods.build(params[:mod].slice(*VALID_MOD_KEYS))
+    @mod = current_account.mods.build(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
       @mod.save!
       redirect_to(@mod)
@@ -31,11 +31,11 @@ class ModsController < ApplicationController
   end
 
   def edit
-    @mod = current_user.mods.find(params[:id]).decorate
+    @mod = current_account.mods.find(params[:id]).decorate
   end
 
   def update
-    @mod = current_user.mods.find(params[:id])
+    @mod = current_account.mods.find(params[:id])
     @mod.assign_attributes(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
       @mod.save!
@@ -46,7 +46,7 @@ class ModsController < ApplicationController
   end
 
   def destroy
-    @mod = current_user.mods.find(params[:id])
+    @mod = current_account.mods.find(params[:id])
     @mod.destroy
     redirect :back
   end
