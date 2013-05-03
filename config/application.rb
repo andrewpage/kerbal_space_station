@@ -18,6 +18,7 @@ end
 module KerbalSpaceStation
   class Application < Rails::Application
     require "ksp"
+    require "markdowner"
     VERSION = "1.0.0"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
