@@ -1,6 +1,6 @@
 module CarouselHelper
-  def carousel(images)
-    render partial: "carousel", locals: { images: images }
+  def carousel(resources)
+    render partial: "carousel", locals: { resources: resources }
   end
 
   def active_item?(item, active)
