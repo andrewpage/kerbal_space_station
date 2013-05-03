@@ -12,7 +12,15 @@ class Account < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :username, uniqueness: true
 
+  after_create :send_analytics
+
   attr_accessible :email
   attr_accessible :username
   attr_accessible :password, :password_confirmation, :remember_me
+
+  private
+
+  def send_analytics
+    Librato.increment "account.signup" if Rails.env.production?
+  end
 end

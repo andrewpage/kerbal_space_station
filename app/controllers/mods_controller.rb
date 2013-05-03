@@ -79,6 +79,7 @@ class ModsController < ApplicationController
   #   redirect_to :back
   # end
 
+  # Use for update emails
   def bookmark
     unless current_account.bookmarks?(@mod)
       current_account.bookmark(@mod)
