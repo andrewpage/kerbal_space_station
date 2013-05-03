@@ -40,7 +40,7 @@ KerbalSpaceStation::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   config.action_controller.asset_host = "d20eprk8nbwd96.cloudfront.net"
@@ -50,6 +50,7 @@ KerbalSpaceStation::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: "kerbal-space-station.herokuapp.com" }
 
   # Enable threaded mode
   # config.threadsafe!
