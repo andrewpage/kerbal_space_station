@@ -7,58 +7,10 @@
       <small>by <%= @mod.account.username %></small>
     </h1>
   </header>
-  <div class="btn-group-wrap">
-    <div class="btn-group">
-      <%= button_to icon_tag("download") + " Download", download_mod_path(@mod) %>
-      <%= button_to "Version #{@mod.version} #{caret_tag}", "#", class: "disabled" %>
-      <%= button_to "KSP #{@mod.compatible} #{caret_tag}", "#", class: "disabled" %>
-      <% if account_signed_in? %>
-        <%= button_to icon_tag("thumbs-up") + " Like", like_mod_path(@mod), class: @mod.liked_style %>
-        <%= button_to icon_tag("thumbs-down") + " Dislike", dislike_mod_path(@mod), class: @mod.disliked_style %>
-        <%= button_to icon_tag("bookmark") + " Bookmark", bookmark_mod_path(@mod), class: @mod.bookmarked_style %>
-        <%= button_to icon_tag("trash") + " Delete", @mod,
-            confirm: 'Are you sure?', method: :delete if current_account == @mod.account %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "actions", locals: { mod: @mod } %>
   <br>
-
-  <p class="text-info well" style="text-align: center;">
-    <%= @mod.liked_by_count %> Likes /
-    <%= @mod.disliked_by_count %> Dislikes /
-    <%= @mod.bookmark_count %> Bookmarks /
-    <%= @mod.download_count %> Downloads
-  </p>
+  <%= render partial: "stats", locals: { mod: @mod } %>
   <br>
-  <ul class="thumbnails">
-    <li class="span6">
-      <%= thumblink image_tag(@mod.images.shift.image, width: "100%") %>
-    </li>
-    <% @mod.images.map(&:image).each do |image| %>
-      <li class="span3"><%= thumblink image_tag image %>
-    <% end if @mod.images.any? %>
-  </ul>
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <%= link_to "Description", "#description", data: toggle("tab") %>
-    </li>
-    <li>
-      <%= link_to "Installing", "#installing", data: toggle("tab") %>
-    </li>
-    <li>
-      <%= link_to "Changelog", "#changelog", data: toggle("tab") %>
-    </li>
-  </ul>
-  <div id="content" class="tab-content">
-    <div class="tab-pane fade active in" id="description">
-      <%= raw @mod.description %>
-    </div>
-    <div class="tab-pane fade" id="installing">
-      <%= raw @mod.install %>
-    </div>
-    <div class="tab-pane fade" id="changelog">
-      <%= raw @mod.changelog %>
-    </div>
-  </div>
-
+  <%= render partial: "thumbs", locals: { images: @mod.images } %>
+  <%= render partial: "content", locals: { mod: @mod } %>
 </article>

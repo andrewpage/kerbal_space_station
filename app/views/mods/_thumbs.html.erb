@@ -1,0 +1,8 @@
+<ul class="thumbnails">
+  <li class="span6">
+    <%= thumblink image_tag(images.shift, width: "100%") %>
+  </li>
+  <% images.each do |image| %>
+    <li class="span3"><%= thumblink image_tag image %>
+  <% end if images.any? %>
+</ul>
