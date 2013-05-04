@@ -1,3 +1,13 @@
 <%= breadcrumbs crumb("Mods") %>
 
-<%= gallary @mods %>
+<% if @mods.any? %>
+  <%= gallary @mods %>
+<% else %>
+  <article class="alert alert-block">
+    <%= close_button %>
+    <h3>Oh no!</h3>
+    <p>
+      There are no mods currently available for listing, sorry!
+    </p>
+  </article>
+<% end %>
