@@ -3,10 +3,10 @@
 <%= simple_form_for @mod, html: { class: "form-horizontal" } do |form| %>
   <%= form.error_notification %>
   <legend><h1>New Mod</h1></legend>
-  <%= form.input :name %>
-  <%= form.input :version, placeholder: "1.0.0" %>
-  <%= form.input :compatible, label: "Select a KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select" } %>
-  <%= form.input :description, input_html: { class: "span8", rows: 6 } %>
+  <%= form.input :name, required: true %>
+  <%= form.input :version, placeholder: "1.0.0", required: true %>
+  <%= form.input :compatible, label: "KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select" } %>
+  <%= form.input :description, required: true, input_html: { class: "span8", rows: 6 } %>
   <%= form.input :install, label: "Install Guide", input_html: { class: "span8", rows: 6 } %>
   <%= form.fields_for :images do |image_form| %>
     <%= image_form.input :image, as: :file %>
