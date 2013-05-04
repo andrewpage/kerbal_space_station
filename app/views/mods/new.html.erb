@@ -12,7 +12,7 @@
     <%= image_form.input :image, as: :file %>
   <% end %>
   <div class="form-actions">
-    <%= form.filepicker_field :upload, services: ["COMPUTER"], button_text: "Upload zip", drag_text: "Drop your zip file here.", button_class: "btn btn-success" %>
+    <%= form.filepicker_field :upload, filepicker_field_options %>
     <%= form.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
