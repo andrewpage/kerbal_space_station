@@ -5,4 +5,16 @@ class Image < ActiveRecord::Base
 
   attr_accessible :primary
   attr_accessible :image
+
+  def to_s
+    image.to_s
+  end
+
+  def medium
+    image.medium
+  end
+
+  def thumb
+    image.thumb
+  end
 end
