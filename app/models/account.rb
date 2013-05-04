@@ -18,6 +18,10 @@ class Account < ActiveRecord::Base
   attr_accessible :username
   attr_accessible :password, :password_confirmation, :remember_me
 
+  def owner?(resource)
+    self == resource.account
+  end
+
   private
 
   def send_analytics
