@@ -102,6 +102,10 @@ class ModsController < ApplicationController
   private
 
   def find_mod
-    @mod = Mod.find(params[:id])
+    @mod = Mod.where(id: params[:id]).first
+    unless @mod.present?
+      flash[:alert] = "That mod either no longer exists or never existed."
+      redirect_to mods_path
+    end
   end
 end
