@@ -16,6 +16,8 @@
         <%= button_to icon_tag("thumbs-up") + " Like", like_mod_path(@mod), class: @mod.liked_style %>
         <%= button_to icon_tag("thumbs-down") + " Dislike", dislike_mod_path(@mod), class: @mod.disliked_style %>
         <%= button_to icon_tag("bookmark") + " Bookmark", bookmark_mod_path(@mod), class: @mod.bookmarked_style %>
+        <%= button_to icon_tag("trash") + " Delete", @mod,
+            confirm: 'Are you sure?', method: :delete if current_account == @mod.account %>
       <% end %>
     </div>
   </div>
