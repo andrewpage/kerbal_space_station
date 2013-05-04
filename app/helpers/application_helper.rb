@@ -80,10 +80,6 @@ module ApplicationHelper
     content_tag(:span, nil, class: "caret")
   end
 
-  def button_to(text, path, options = {})
-    link_to raw(text), path, options.merge!(class: "btn #{options[:class]}")
-  end
-
   def modal_link_to(text, path, options = {})
     link_to raw(text), path, options.merge!(data: { toggle: "modal" })
   end
