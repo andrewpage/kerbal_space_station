@@ -51,7 +51,8 @@ class ModsController < ApplicationController
   def destroy
     @mod = current_account.mods.find(params[:id])
     @mod.destroy
-    redirect_to :back
+    flash[:notice] = "You've deleted #{@mod.name}."
+    redirect_to mods_path
   end
 
   def like
