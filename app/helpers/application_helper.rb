@@ -91,4 +91,8 @@ module ApplicationHelper
   def toggle(type)
     { toggle: type }
   end
+
+  def dismiss(type)
+    { dismiss: type }
+  end
 end
