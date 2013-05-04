@@ -51,7 +51,7 @@ class ModsController < ApplicationController
   def destroy
     @mod = current_account.mods.find(params[:id])
     @mod.destroy
-    redirect :back
+    redirect_to :back
   end
 
   def like
