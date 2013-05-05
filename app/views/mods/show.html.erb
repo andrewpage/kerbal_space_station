@@ -11,6 +11,6 @@
   <br>
   <%= render partial: "stats", locals: { mod: @mod } %>
   <br>
-  <%= render partial: "thumbs", locals: { images: @mod.images } %>
+  <%= render partial: "thumbs", locals: { images: @mod.images, primary: @mod.images.pop } %>
   <%= render partial: "content", locals: { mod: @mod } %>
 </article>

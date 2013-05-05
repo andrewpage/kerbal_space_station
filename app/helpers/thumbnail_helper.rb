@@ -4,6 +4,6 @@ module ThumbnailHelper
   end
 
   def thumblink(image, link = "#")
-    link_to image, link, class: "thumbnail"
+    link_to image, link, class: "thumbnail", data: toggle("lightbox")
   end
 end
