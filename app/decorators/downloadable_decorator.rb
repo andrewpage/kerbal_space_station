@@ -24,4 +24,12 @@ class DownloadableDecorator < Draper::Decorator
   def description(limit = 10_000)
     h.raw Markdowner.new(source.description.truncate(limit)).render!
   end
+
+  def license_name
+    if license.present?
+      license.split("\n").first
+    else
+      "No"
+    end
+  end
 end

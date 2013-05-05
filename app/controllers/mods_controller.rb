@@ -2,7 +2,7 @@ class ModsController < ApplicationController
   before_filter :authenticate_account!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :find_mod, only: [:show, :ignore, :bookmark, :report, :like, :dislike, :download]
 
-  VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible]
+  VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible, :license]
 
   def index
     @mods = Mod.order(:created_at).decorate
