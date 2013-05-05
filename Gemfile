@@ -7,7 +7,6 @@ ruby "1.9.3"
 gem "rails", "~> 3.2"
 gem "unicorn", "~> 4.0"
 gem "sidekiq", "~> 2.0"
-gem "sucker_punch", "~> 0.4"
 gem "pg", "~> 0.14"
 gem "foreigner", "~> 1.4"
 

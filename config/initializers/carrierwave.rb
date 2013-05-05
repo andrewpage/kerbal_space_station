@@ -10,5 +10,5 @@ CarrierWave.configure do |config|
 end
 
 CarrierWave::Backgrounder.configure do |c|
-  c.backend :sucker_punch, queue: :carrierwave
+  c.backend :sidekiq, queue: :carrierwave, size: 2
 end
