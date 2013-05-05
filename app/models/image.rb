@@ -17,4 +17,8 @@ class Image < ActiveRecord::Base
   def thumb
     image.thumb
   end
+
+  def carousel
+    image.carousel
+  end
 end

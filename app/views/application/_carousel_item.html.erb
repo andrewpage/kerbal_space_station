@@ -1,5 +1,5 @@
 <div class="item <%= active_item?(carousel_item, active) %>">
-  <%= link_to image_tag(carousel_item.primary_image, width: "100%"), carousel_item %>
+  <%= link_to image_tag(carousel_item.primary_image.carousel, width: "100%"), carousel_item %>
   <div class="carousel-caption">
     <h4>
       <%= link_to carousel_item do %>
