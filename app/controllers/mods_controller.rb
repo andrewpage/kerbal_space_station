@@ -14,7 +14,7 @@ class ModsController < ApplicationController
 
   def new
     @mod = current_account.mods.build
-    3.times { @mod.images.build }
+    4.times { @mod.images.build }
   end
 
   def create
@@ -27,13 +27,14 @@ class ModsController < ApplicationController
       @mod.errors.full_messages.each do |error|
         Rails.logger.warn("\n  * #{error}")
       end
-      @mod.images = (1..3).map { @mod.images.build }
+      @mod.images << (1..(@mod.images.size - 4)).map { @mod.images.build }
       render(:new)
     end
   end
 
   def edit
     @mod = current_account.mods.find(params[:id]).decorate
+    @mod.images << (1..(@mod.images.size - 4)).map { @mod.images.build }
   end
 
   def update
@@ -44,6 +45,10 @@ class ModsController < ApplicationController
       flash[:notice] = "Your mod has been saved!"
       redirect_to(@mod)
     else
+      Rails.logger.warn("Something went wrong:")
+      @mod.errors.full_messages.each do |error|
+        Rails.logger.warn("\n  * #{error}")
+      end
       render(:edit)
     end
   end

@@ -1,0 +1,13 @@
+<%= form.error_notification %>
+<legend><h1>New Mod</h1></legend>
+<%= form.input :name, required: true %>
+<%= form.input :version, placeholder: "1.0.0", required: true %>
+<%= form.input :compatible, label: "KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select" } %>
+<%= form.input :source, placeholder: "http://github.com/username/reponame" %>
+<%= form.input :description, required: true, input_html: { class: "span8", rows: 6 } %>
+<%= form.input :install, label: "Install Guide", input_html: { class: "span8", rows: 6 } %>
+<%= form.input :changelog, input_html: { class: "span8", rows: 6 } %>
+<%= form.input :license, input_html: { class: "span8", rows: 6 }, required: true %>
+<%= form.fields_for :images do |image_form| %>
+  <%= image_form.input :image, as: :file %>
+<% end %>

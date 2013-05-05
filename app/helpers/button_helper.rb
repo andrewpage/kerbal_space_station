@@ -31,6 +31,10 @@ module ButtonHelper
     icon_tag("trash") + " Delete"
   end
 
+  def edit_button
+    icon_tag("edit") + " Change"
+  end
+
   def close_button(type)
     content_tag :button, icon_tag("remove-sign"), class: "close", data: dismiss(type)
   end

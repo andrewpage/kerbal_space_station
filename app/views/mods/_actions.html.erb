@@ -1,14 +1,16 @@
 <div class="btn-group-wrap">
   <div class="btn-group">
-    <%= button_to download_button, download_mod_path(mod) %>
+    <%= button_to download_button, download_mod_path(mod), class: "btn-primary" %>
     <%= button_to version_button(mod), "#", class: "disabled" %>
     <%= button_to compatible_button(mod), "#", class: "disabled" %>
     <% if account_signed_in? %>
       <%= button_to like_button, like_mod_path(mod), class: mod.liked_style %>
       <%= button_to dislike_button, dislike_mod_path(mod), class: mod.disliked_style %>
       <%= button_to bookmark_button, bookmark_mod_path(mod), class: mod.bookmarked_style %>
-      <%= button_to trash_button, mod,
-          confirm: 'Are you sure?', method: :delete if current_account.owner?(mod) %>
+      <% if current_account.owner?(mod) %>
+        <%= button_to edit_button, edit_mod_path(mod) %>
+      <% end %>
+        <%= button_to trash_button, mod, confirm: 'Are you sure?', method: :delete, class: "btn-danger" %>
     <% end %>
   </div>
 </div>

@@ -1,10 +1,9 @@
-<%= breadcrumbs crumb("Mods", mods_path), crumb("New Mod") %>
+<%= breadcrumbs crumb("Mods", mods_path), crumb(@mod.name) %>
 
 <%= simple_form_for @mod, html: { class: "form-horizontal" } do |form| %>
   <%= render partial: "form", locals: { form: form } %>
 
   <div class="form-actions">
-    <%= form.filepicker_field :upload, filepicker_field_options %>
     <%= form.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
