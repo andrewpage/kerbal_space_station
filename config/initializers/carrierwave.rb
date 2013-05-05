@@ -8,3 +8,7 @@ CarrierWave.configure do |config|
   config.fog_directory  = ENV["AMAZON_BUCKET"]
   config.fog_public     = true
 end
+
+CarrierWave::Backgrounder.configure do |c|
+  c.backend :sucker_punch, queue: :carrierwave
+end
