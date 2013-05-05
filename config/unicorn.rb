@@ -1,5 +1,5 @@
-worker_processes (ENV["UNICORN_WORKERS"] || 1).to_i
-timeout (ENV["UNICORN_TIMEOUT"] || 15).to_i
+worker_processes (ENV["UNICORN_WORKERS"] || 4).to_i
+timeout (ENV["UNICORN_TIMEOUT"] || 90).to_i
 preload_app true
 
 before_fork do |server, worker|
