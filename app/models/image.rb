@@ -3,11 +3,8 @@ class Image < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  process_in_background :image
-  store_in_background :image
-
   attr_accessible :primary
-  attr_accessible :image, :image_processing
+  attr_accessible :image
 
   def to_s
     image.to_s

@@ -2,8 +2,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
-  include CarrierWave::Backgrounder::Delay
-
 
   storage :fog
 
