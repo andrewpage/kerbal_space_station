@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require sugar
+//= require prefixfree
+//= require chosen
 //= require bootstrap
+//= require bootstrap/tour
+//= require bootstrap/lightbox
 //= require_tree .
 
 $(function() {

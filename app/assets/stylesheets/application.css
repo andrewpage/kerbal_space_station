@@ -9,7 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
+ *= require bootstrap-responsive
  *= require font-awesome
+ *= require chosen
+ *= require bootstrap/tour
+ *= require bootstrap/lightbox
  *= require_self
  */
 

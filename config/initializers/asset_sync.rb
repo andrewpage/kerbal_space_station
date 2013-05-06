@@ -1,4 +1,4 @@
-if defined?(AssetSync)
+if defined?(AssetSync) && !(ENV["HOME"] == "/app")
   AssetSync.configure do |config|
     config.fog_provider = "AWS"
     config.fog_directory = ENV["AMAZON_BUCKET"]

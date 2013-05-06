@@ -76,7 +76,7 @@ group :development do
 
   # Metrics
   gem "cane", "~> 2.5", require: false
-  gem "flog", "~> 3.2", require: false
+  gem "flog", "~> 4.0", require: false
   gem "rails_best_practices", "~> 1.0", require: false
   gem "reek", "~> 1.2", require: false
   gem "ruby-prof", "~> 0.11", require: false
@@ -108,6 +108,7 @@ group :assets do
   gem "sass-rails", "~> 3.2"
   gem "asset_sync", "~> 0.5"
   gem "jquery-rails", "~> 2.0"
-  gem "uglifier", "~> 1.0"
+  gem "uglifier", "~> 2.0"
   gem "yui-compressor", "~> 0.9"
+  gem "turbo-sprockets-rails3", "~> 0.3"
 end
