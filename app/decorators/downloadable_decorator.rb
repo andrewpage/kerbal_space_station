@@ -39,7 +39,7 @@ class DownloadableDecorator < Draper::Decorator
 
   def license_name
     if license.present?
-      license.split("\n").first
+      source.license.split("\n").first
     else
       "No"
     end
