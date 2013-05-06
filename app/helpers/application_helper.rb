@@ -95,4 +95,8 @@ module ApplicationHelper
   def dismiss(type)
     { dismiss: type }
   end
+
+  def mod_names
+    @mod_names ||= Downloadable.pluck(:name)
+  end
 end
