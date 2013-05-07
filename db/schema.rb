@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505170143) do
+ActiveRecord::Schema.define(:version => 20130506093413) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20130505170143) do
   add_index "downloadables", ["upload"], :name => "index_downloadables_on_upload"
   add_index "downloadables", ["version"], :name => "index_downloadables_on_version"
 
+  create_table "downloadables_tags", :force => true do |t|
+    t.integer "tag_id"
+    t.integer "downloadable_id"
+  end
+
+  add_index "downloadables_tags", ["downloadable_id"], :name => "index_downloadables_tags_on_downloadable_id"
+  add_index "downloadables_tags", ["tag_id"], :name => "index_downloadables_tags_on_tag_id"
+
   create_table "images", :force => true do |t|
     t.string   "image"
     t.boolean  "primary"
@@ -81,5 +89,11 @@ ActiveRecord::Schema.define(:version => 20130505170143) do
   add_index "images", ["downloadable_id"], :name => "index_images_on_downloadable_id"
   add_index "images", ["image"], :name => "index_images_on_image"
   add_index "images", ["primary"], :name => "index_images_on_primary"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name"
 
 end

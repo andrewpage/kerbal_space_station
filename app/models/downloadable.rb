@@ -4,6 +4,8 @@ class Downloadable < ActiveRecord::Base
 
   belongs_to :account
   has_many :images, dependent: :destroy, order: :id
+  has_and_belongs_to_many :tags
+
 
   accepts_nested_attributes_for :images
 
@@ -15,6 +17,7 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :description
   attr_accessible :version
   attr_accessible :compatible
+  attr_accessible :tags
   attr_accessible :upload
   attr_accessible :source
   attr_accessible :license, :license_name
