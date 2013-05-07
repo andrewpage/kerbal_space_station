@@ -10,4 +10,8 @@ class ImageNull
   def to_s
     "rocket.gif"
   end
+
+  def id
+    rand(1..100)
+  end
 end
