@@ -7,4 +7,8 @@ class ImagesNull
   def any?
     false
   end
+
+  def id
+    rand(1..100)
+  end
 end
