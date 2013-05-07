@@ -7,11 +7,11 @@
       <small>by <%= @mod.account.username %></small>
     </h1>
   </header>
+  <%= render partial: "thumbs", locals: { images: @mod.images, primary: @mod.images.shift } %>
   <%= render partial: "actions", locals: { mod: @mod } %>
   <br>
   <%= render partial: "stats", locals: { mod: @mod } %>
   <%= render partial: "tags", locals: { tags: @mod.tags } %>
   <br>
-  <%= render partial: "thumbs", locals: { images: @mod.images, primary: @mod.images.shift } %>
   <%= render partial: "content", locals: { mod: @mod } %>
 </article>

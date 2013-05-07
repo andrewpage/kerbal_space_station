@@ -31,3 +31,8 @@ body {
 .nav-pills {
   text-align: center;
 }
+
+.carousel .item img {
+  width: 1170px;
+  height: 580px;
+}
