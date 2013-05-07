@@ -1,2 +1,3 @@
-<%= render partial: "controller_javascript" %>
+<%= filepicker_js_include_tag if @mod.present? %>
 <%= javascript_include_tag "application" %>
+<%= render partial: "controller_javascript" %>

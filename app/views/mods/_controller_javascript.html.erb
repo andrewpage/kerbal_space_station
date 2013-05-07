@@ -1,1 +1,7 @@
-<%= filepicker_js_include_tag %>
+<script type="text/javascript" async>
+$(function() {
+  $("#mod_tags").tagsManager({
+    prefilled: <%= raw @mod.tags.map(&:name).as_json %>
+  });
+});
+</script>
