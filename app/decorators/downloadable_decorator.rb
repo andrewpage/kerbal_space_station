@@ -1,6 +1,14 @@
 class DownloadableDecorator < Draper::Decorator
   delegate_all
 
+  def tags
+    unless source.tags.empty?
+      source.tags.map(&:name).join(",")
+    else
+      nil
+    end
+  end
+
   def liked_style
     "btn-success" if h.current_account.likes?(source)
   end

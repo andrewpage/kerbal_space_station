@@ -26,4 +26,7 @@
 $(function() {
   $("[data-toggle=tooltip]").tooltip();
   $(".chzn-select").chosen();
+  $("#mod_tags").tagsManager({
+    prefilled: $("#mod_tags").val()
+  });
 })
