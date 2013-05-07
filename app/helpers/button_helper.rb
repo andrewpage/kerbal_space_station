@@ -27,8 +27,8 @@ module ButtonHelper
     icon_tag("bookmark") + " Bookmark"
   end
 
-  def trash_button
-    icon_tag("trash") + " Delete"
+  def delete_button(have_text = true)
+    buttoner(icon_tag("trash"), "Delete", have_text)
   end
 
   def edit_button
@@ -37,5 +37,11 @@ module ButtonHelper
 
   def close_button(type)
     content_tag :button, icon_tag("remove-sign"), class: "close", data: dismiss(type)
+  end
+
+  private
+
+  def buttoner(icon, text, have_text)
+    if have_text then "#{icon} #{text}" else icon end
   end
 end

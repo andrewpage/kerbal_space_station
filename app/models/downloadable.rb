@@ -6,6 +6,12 @@ class Downloadable < ActiveRecord::Base
   has_many :images, dependent: :destroy, order: :id
   has_and_belongs_to_many :tags
 
+  mapping do
+    indexes :name, boost: 10
+    indexes :description # analyzer: 'snowball'
+  end
+
+  index_name INDEX_NAME
 
   accepts_nested_attributes_for :images
 
@@ -23,13 +29,6 @@ class Downloadable < ActiveRecord::Base
   attr_accessible :license, :license_name
   attr_accessible :images, :images_attributes
   attr_accessible :download_count, :bookmark_count
-
-  mapping do
-    indexes :name, boost: 10
-    indexes :description # analyzer: 'snowball'
-  end
-
-  index_name INDEX_NAME
 
   def self.search(q)
     tire.search(load: true) do
