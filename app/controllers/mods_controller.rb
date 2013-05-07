@@ -2,7 +2,7 @@ class ModsController < ApplicationController
   before_filter :authenticate_account!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :find_mod, only: [:show, :ignore, :bookmark, :report, :like, :dislike, :download]
 
-  VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible, :license, :source]
+  VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible, :license, :source, :tags]
 
   def index
     @mods = Mod.order(:created_at).decorate
@@ -18,6 +18,9 @@ class ModsController < ApplicationController
   end
 
   def create
+    params[:mod][:tags] = params.delete("hidden-mod")[:tags].split(",").map do |tag_name|
+      Tag.where(name: tag_name).first_or_initialize
+    end
     @mod = current_account.mods.build(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
       @mod.save!

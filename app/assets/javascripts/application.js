@@ -18,9 +18,13 @@
 //= require bootstrap
 //= require bootstrap/tour
 //= require bootstrap/lightbox
+//= require bootstrap/fileupload
+//= require bootstrap/markdown
+//= require tagmanager
 //= require_tree .
 
 $(function() {
-  $('[data-toggle=tooltip]').tooltip();
-  $('.chzn-select').chosen();
+  $("[data-toggle=tooltip]").tooltip();
+  $(".chzn-select").chosen();
+  $("#mod_tags").tagsManager();
 })

@@ -10,7 +10,7 @@
       <% if current_account.owner?(mod) %>
         <%= button_to edit_button, edit_mod_path(mod) %>
       <% end %>
-        <%= button_to trash_button, mod, confirm: 'Are you sure?', method: :delete, class: "btn-danger" %>
+        <%= button_to delete_button, mod, confirm: 'Are you sure?', method: :delete, class: "btn-danger" %>
     <% end %>
   </div>
 </div>

@@ -14,6 +14,9 @@
  *= require chosen
  *= require bootstrap/tour
  *= require bootstrap/lightbox
+ *= require bootstrap/fileupload
+ *= require bootstrap/markdown
+ *= require tagmanager
  *= require_self
  */
 

@@ -6,13 +6,14 @@ folder "vendor/assets" do
   zxcvbnjs = "https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/1.0/zxcvbn-async.js"
   chosenjs = "https://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.12/chosen.jquery.js"
   lightboxjs = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.5/bootstrap-lightbox.js"
-
+  tagmanagerjs = "https://raw.github.com/max-favilli/tagmanager/master/bootstrap-tagmanager.js"
 
   folder "javascripts" do
     file "prefixfree.js", prefixfreejs
     file "sugar.js", sugarjs
     file "zxcvbn-async.js", zxcvbnjs
     file "chosen.js", chosenjs
+    file "tagmanager.js", tagmanagerjs
     folder "bootstrap" do
       file "lightbox.js", lightboxjs
     end
@@ -20,6 +21,7 @@ folder "vendor/assets" do
 
   chosencss = "https://cdnjs.cloudflare.com/ajax/libs/chosen/0.9.12/chosen.css"
   lightboxcss = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.5/bootstrap-lightbox.css"
+  tagmanagercss = "https://raw.github.com/max-favilli/tagmanager/master/bootstrap-tagmanager.css"
   folder "stylesheets" do
     file "chosen.css", chosencss
     folder "bootstrap" do

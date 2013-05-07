@@ -1,13 +1,35 @@
 <%= form.error_notification %>
 <legend><h1>New Mod</h1></legend>
-<%= form.input :name, required: true %>
-<%= form.input :version, placeholder: "1.0.0", required: true %>
-<%= form.input :compatible, label: "KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select" } %>
-<%= form.input :source, placeholder: "http://github.com/username/reponame" %>
-<%= form.input :description, required: true, input_html: { class: "span8", rows: 6 } %>
-<%= form.input :install, label: "Install Guide", input_html: { class: "span8", rows: 6 } %>
-<%= form.input :changelog, input_html: { class: "span8", rows: 6 } %>
-<%= form.input :license, input_html: { class: "span8", rows: 6 }, required: true %>
-<%= form.fields_for :images do |image_form| %>
-  <%= image_form.input :image, as: :file %>
-<% end %>
+<%= form.input :name, required: true, input_html: { class: "span6" } %>
+<%= form.input :version, placeholder: "1.0.0", required: true, input_html: { class: "span6" } %>
+<%= form.input :compatible, label: "KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select span6" } %>
+<%= form.input :source, placeholder: "http://github.com/username/reponame", input_html: { class: "span6" }  %>
+<%= form.input :tags, placeholder: "one, two, three", input_html: { value: nil } %>
+<%= form.input :description, required: true, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
+<%= form.input :install, label: "Install Guide", input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
+<%= form.input :changelog, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
+<%= form.input :license, required: true, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
+<ul class="thumbnails">
+  <%= form.fields_for :images do |image_form| %>
+    <li class="span3">
+      <div class="fileupload fileupload-new" data-provides="fileupload">
+        <div class="fileupload-preview thumbnail" style="width: 200px; height: 100px">
+        </div>
+        <div class="btn-group-wrap">
+          <div class="btn-group">
+            <span class="btn btn-file">
+              <span class="fileupload-new">
+                <%= icon_tag("cloud-upload") %> Upload
+              </span>
+              <span class="fileupload-exists">Change</span>
+              <%= image_form.input_field :image, as: :file %>
+            </span>
+          </div>
+          <%= button_to delete_button(false), "#", class: "fileupload-exists btn-danger", data: dismiss("fileupload") %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+
