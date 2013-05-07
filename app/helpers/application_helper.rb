@@ -48,7 +48,7 @@ module ApplicationHelper
   end
 
   def view_analytics_domain
-    "kerbal-space-station.herokuapp.com"
+    "www.kerbalstation.org"
   end
 
   def form_options(url = nil, as = resource_name)
