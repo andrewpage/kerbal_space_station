@@ -7,6 +7,10 @@ class ImageNull
     "rocket.gif"
   end
 
+  def carousel
+    "rocket.gif"
+  end
+
   def to_s
     "rocket.gif"
   end
