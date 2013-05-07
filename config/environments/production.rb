@@ -46,11 +46,11 @@ KerbalSpaceStation::Application.configure do
   config.action_controller.asset_host = "d20eprk8nbwd96.cloudfront.net"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( search.js )
+  # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: "kerbal-space-station.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "www.kerbalstation.org" }
 
   # Enable threaded mode
   # config.threadsafe!

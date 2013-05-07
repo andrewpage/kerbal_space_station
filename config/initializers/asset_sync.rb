@@ -1,4 +1,4 @@
-if defined?(AssetSync) && !(ENV["HOME"] == "/app")
+if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = "AWS"
     config.fog_directory = ENV["AMAZON_BUCKET"]
@@ -19,6 +19,6 @@ if defined?(AssetSync) && !(ENV["HOME"] == "/app")
     config.manifest = ENV["ASSET_SYNC_MANIFEST"]
     #
     # Fail silently.  Useful for environments such as Heroku
-    # config.fail_silently = true
+    config.fail_silently = true
   end
 end
