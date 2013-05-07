@@ -13,8 +13,7 @@ class ModsController < ApplicationController
   end
 
   def new
-    @mod = current_account.mods.build
-    4.times { @mod.images.build }
+    @mod = current_account.mods.build(images: (1..4).map { Image.new }).decorate
   end
 
   def create

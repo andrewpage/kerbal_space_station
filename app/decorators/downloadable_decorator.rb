@@ -2,7 +2,7 @@ class DownloadableDecorator < Draper::Decorator
   delegate_all
 
   def tags
-    unless source.tags.empty?
+    if source.tags.any?
       source.tags.map(&:name).join(",")
     else
       nil
