@@ -41,6 +41,9 @@ class ModsController < ApplicationController
   end
 
   def update
+    params[:mod][:tags] = params.delete("hidden-mod")[:tags].split(",").map do |tag_name|
+      Tag.where(name: tag_name).first_or_initialize
+    end
     @mod = current_account.mods.find(params[:id])
     @mod.assign_attributes(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
