@@ -1,0 +1,16 @@
+<div class="caption">
+  <h4 style="text-align: center">
+    <%= link_to thumbnail_caption.name, thumbnail_caption %>
+  </h4>
+  <p><%= thumbnail_caption.description(150) %></p>
+  <div class="pull-center">
+    <div class="btn-group">
+      <%= button_to download_button, download_craft_path(thumbnail_caption), class: "btn-primary" %>
+      <% if account_signed_in? %>
+        <%= button_to buttoner("thumbs-up"), like_craft_path(thumbnail_caption), tooltip("Like").merge(class: thumbnail_caption.liked_style) %>
+        <%= button_to buttoner("bookmark"), bookmark_craft_path(thumbnail_caption), tooltip("Bookmark").merge(class: thumbnail_caption.bookmarked_style) %>
+        <%= button_to buttoner("flag"), report_craft_path(thumbnail_caption), tooltip("Report") %>
+      <% end %>
+    </div>
+  </div>
+</div>

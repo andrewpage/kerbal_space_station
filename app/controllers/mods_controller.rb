@@ -1,7 +1,6 @@
-class ModsController < ApplicationController
-  before_filter :authenticate_account!, only: [:new, :create, :edit, :update, :destroy]
+class ModsController < DownloadablesController
   before_filter :find_mod, only: [:show, :ignore, :bookmark, :report, :like, :dislike, :download]
-  before_filter :extract_tags, only: [:create, :update]
+
   VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible, :license, :source, :tags]
 
   def index
@@ -24,14 +23,14 @@ class ModsController < ApplicationController
       redirect_to(@mod)
     else
       report_errors(@mod)
-      @mod.images << empty_images
+      (3 - @mod.images.size).times { @mod.images.build }
       render(:new)
     end
   end
 
   def edit
     @mod = current_account.mods.find(params[:id]).decorate
-    @mod.images << empty_images
+    (3 - @mod.images.size).times { @mod.images.build }
   end
 
   def update
@@ -43,7 +42,7 @@ class ModsController < ApplicationController
       redirect_to(@mod)
     else
       report_errors(@mod)
-      @mod.images << empty_images
+      (3 - @mod.images.size).times { @mod.images.build }
       render(:edit)
     end
   end
@@ -95,33 +94,5 @@ class ModsController < ApplicationController
       flash[:alert] = "That mod either no longer exists or never existed."
       redirect_to mods_path
     end
-  end
-
-  def vote(type, mod)
-    unless current_account.send(:"#{type}s?", mod)
-      current_account.send(type, mod)
-    else
-      current_account.send(:"un#{type}", mod)
-    end
-    flash[:notice] = "You've #{type}d #{@mod.name}."
-    redirect_to :back
-  end
-
-  def extract_tags
-    tags = params.delete("hidden-mod")[:tags].split(",")
-    params[:mod][:tags] = tags.map(&method(:name_to_tag))
-  end
-
-  def name_to_tag(name)
-    Tag.where(name: name).first_or_initialize
-  end
-
-  def report_errors(resource)
-    Rails.logger.warn("Something went wrong:")
-    resource.errors.full_messages.each(&method(:error_line))
-  end
-
-  def error_line(error)
-    Rails.logger.warn("\n  * #{error}")
   end
 end
