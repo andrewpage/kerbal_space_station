@@ -66,23 +66,11 @@ class ModsController < ApplicationController
   end
 
   def like
-    unless current_account.likes?(@mod)
-      current_account.like(@mod)
-    else
-      current_account.unlike(@mod)
-    end
-    flash[:notice] = "You've liked #{@mod.name}."
-    redirect_to :back
+    vote(:like, @mod)
   end
 
   def dislike
-    unless current_account.dislikes?(@mod)
-      current_account.dislike(@mod)
-    else
-      current_account.undislike(@mod)
-    end
-    flash[:notice] = "You've disliked #{@mod.name}."
-    redirect_to :back
+    vote(:dislike, @mod)
   end
 
   # def report
@@ -117,5 +105,15 @@ class ModsController < ApplicationController
       flash[:alert] = "That mod either no longer exists or never existed."
       redirect_to mods_path
     end
+  end
+
+  def vote(type, mod)
+    unless current_account.send(:"#{type}s?", mod)
+      current_account.send(type, mod)
+    else
+      current_account.send(:"un#{type}", mod)
+    end
+    flash[:notice] = "You've #{type}d #{@mod.name}."
+    redirect_to :back
   end
 end
