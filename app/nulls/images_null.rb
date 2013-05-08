@@ -7,4 +7,8 @@ class ImagesNull
   def any?
     false
   end
+
+  def persisted?
+    false
+  end
 end

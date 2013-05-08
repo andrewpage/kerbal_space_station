@@ -13,36 +13,27 @@ class ModsController < ApplicationController
   end
 
   def new
-    @mod = current_account.mods.build(images: (1..4).map { Image.new }).decorate
+    @mod = current_account.mods.build(images: empty_images()).decorate
   end
 
   def create
-    params[:mod][:tags] = params.delete("hidden-mod")[:tags].split(",").map do |tag_name|
-      Tag.where(name: tag_name).first_or_initialize
-    end
     @mod = current_account.mods.build(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
       @mod.save!
       redirect_to(@mod)
     else
-      Rails.logger.warn("Something went wrong:")
-      @mod.errors.full_messages.each do |error|
-        Rails.logger.warn("\n  * #{error}")
-      end
-      @mod.images << (1..(@mod.images.size - 4)).map { @mod.images.build }
+      report_errors(@mod)
+      @mod.images << empty_images
       render(:new)
     end
   end
 
   def edit
     @mod = current_account.mods.find(params[:id]).decorate
-    @mod.images << (1..(@mod.images.size - 4)).map { @mod.images.build }
+    @mod.images << empty_images
   end
 
   def update
-    params[:mod][:tags] = params.delete("hidden-mod")[:tags].split(",").map do |tag_name|
-      Tag.where(name: tag_name).first_or_initialize
-    end
     @mod = current_account.mods.find(params[:id])
     @mod.assign_attributes(params[:mod].slice(*VALID_MOD_KEYS))
     if @mod.valid?
@@ -50,10 +41,8 @@ class ModsController < ApplicationController
       flash[:notice] = "Your mod has been saved!"
       redirect_to(@mod)
     else
-      Rails.logger.warn("Something went wrong:")
-      @mod.errors.full_messages.each do |error|
-        Rails.logger.warn("\n  * #{error}")
-      end
+      report_errors(@mod)
+      @mod.images << empty_images
       render(:edit)
     end
   end
@@ -120,5 +109,26 @@ class ModsController < ApplicationController
   def extract_tags
     tags = params.delete("hidden-mod")[:tags].split(",")
     params[:mod][:tags] = tags.map(&method(:name_to_tag))
+  end
+
+  def name_to_tag(name)
+    Tag.where(name: name).first_or_initialize
+  end
+
+  def report_errors(resource)
+    Rails.logger.warn("Something went wrong:")
+    resource.errors.full_messages.each(&method(:error_line))
+  end
+
+  def error_line(error)
+    Rails.logger.warn("\n  * #{error}")
+  end
+
+  def maximum_images(resource)
+    1..(Mod::MAXIMUM_IMAGES - resource.images.size)
+  end
+
+  def empty_images(resource = Mod.new)
+    maximum_images(resource).map { Image.new }
   end
 end
