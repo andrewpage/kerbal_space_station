@@ -10,6 +10,8 @@
   </li>
   <li>
     <%= link_to "License", "#license", data: toggle("tab") %>
+  <li>
+    <%= link_to buttoner("comments", "Comments"), "#comments", data: toggle("tab") %>
   </li>
 </ul>
 <div id="content" class="tab-content">
@@ -24,5 +26,8 @@
   </div>
   <div class="tab-pane fade" id="license">
     <%= raw mod.license %>
+  </div>
+  <div class="tab-pane fade" id="comments">
+    <%= render partial: "disqus" %>
   </div>
 </div>
