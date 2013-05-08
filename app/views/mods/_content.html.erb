@@ -1,15 +1,16 @@
 <ul class="nav nav-tabs">
   <li class="active">
-    <%= link_to "Description", "#description", data: toggle("tab") %>
+    <%= link_to buttoner("quote-left", "Description"), "#description", data: toggle("tab") %>
   </li>
   <li>
-    <%= link_to "Installing", "#installing", data: toggle("tab") %>
+    <%= link_to buttoner("download-alt", "Installing"), "#installing", data: toggle("tab") %>
   </li>
   <li>
-    <%= link_to "Changelog", "#changelog", data: toggle("tab") %>
+    <%= link_to buttoner("list", "Changelog"), "#changelog", data: toggle("tab") %>
   </li>
   <li>
-    <%= link_to "License", "#license", data: toggle("tab") %>
+    <%= link_to buttoner("legal", "License"), "#license", data: toggle("tab") %>
+  </li>
   <li>
     <%= link_to buttoner("comments", "Comments"), "#comments", data: toggle("tab") %>
   </li>
@@ -31,3 +32,4 @@
     <%= render partial: "disqus" %>
   </div>
 </div>
+

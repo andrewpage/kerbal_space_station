@@ -1,0 +1,21 @@
+<ul class="thumbnails">
+  <%= form.fields_for :images do |image_form| %>
+    <li class="span4">
+      <div class="pull-center">
+        <div class="fileupload fileupload-new" data-provides="fileupload">
+          <div class="fileupload-preview thumbnail"></div>
+          <div class="btn-group">
+            <span class="btn btn-file">
+              <span class="fileupload-new">
+                <%= upload_button %>
+              </span>
+              <span class="fileupload-exists">Change</span>
+              <%= image_form.input_field :image, as: :file %>
+            </span>
+          </div>
+          <%= button_to delete_button(false), "#", class: "fileupload-exists btn-danger", data: dismiss("fileupload") %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

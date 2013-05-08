@@ -13,7 +13,8 @@ class ModsController < ApplicationController
   end
 
   def new
-    @mod = current_account.mods.build(images: empty_images()).decorate
+    @mod = current_account.mods.build.decorate
+    3.times { @mod.images.build }
   end
 
   def create
@@ -122,13 +123,5 @@ class ModsController < ApplicationController
 
   def error_line(error)
     Rails.logger.warn("\n  * #{error}")
-  end
-
-  def maximum_images(resource)
-    1..(Mod::MAXIMUM_IMAGES - resource.images.size)
-  end
-
-  def empty_images(resource = Mod.new)
-    maximum_images(resource).map { Image.new }
   end
 end

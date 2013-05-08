@@ -9,27 +9,11 @@
 <%= form.input :install, label: "Install Guide", input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
 <%= form.input :changelog, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
 <%= form.input :license, required: true, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
-<ul class="thumbnails">
-  <%= form.fields_for :images do |image_form| %>
-    <li class="span3">
-      <div class="fileupload fileupload-new" data-provides="fileupload">
-        <div class="fileupload-preview thumbnail" style="width: 200px; height: 100px">
-        </div>
-        <div class="btn-group-wrap">
-          <div class="btn-group">
-            <span class="btn btn-file">
-              <span class="fileupload-new">
-                <%= icon_tag("cloud-upload") %> Upload
-              </span>
-              <span class="fileupload-exists">Change</span>
-              <%= image_form.input_field :image, as: :file %>
-            </span>
-          </div>
-          <%= button_to delete_button(false), "#", class: "fileupload-exists btn-danger", data: dismiss("fileupload") %>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="control-group">
+  <div class="controls">
+    <%= render partial: "form_images", locals: { form: form } %>
+  </div>
+</div>
+
 
 

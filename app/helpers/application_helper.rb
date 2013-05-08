@@ -73,7 +73,7 @@ module ApplicationHelper
   end
 
   def icon_tag(icon, options = {})
-    raw content_tag :i, nil, options.merge(class: "icon-#{icon} #{options[:class]}")
+    content_tag :i, nil, options.merge(class: "icon-#{icon} #{options[:class]}")
   end
 
   def caret_tag
@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def modal_link_to(text, path, options = {})
-    link_to raw(text), path, options.merge!(data: { toggle: "modal" })
+    link_to text, path, options.merge!(data: toggle("modal"))
   end
 
   def tooltip(title)

@@ -27,7 +27,7 @@ body {
   padding-top: 60px;
 }
 
-.btn-group-wrap {
+.pull-center {
     text-align: center;
 }
 
@@ -38,4 +38,9 @@ body {
 .carousel .item img {
   width: 1170px;
   height: 580px;
+}
+
+.fileupload-preview.thumbnail {
+  width: 200px;
+  height: 100px;
 }

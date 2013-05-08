@@ -4,7 +4,11 @@ module ButtonHelper
   end
 
   def download_button
-    icon_tag("download") + " Download"
+    buttoner("download", "Download")
+  end
+
+  def upload_button
+    buttoner("upload", "Upload")
   end
 
   def version_button(mod)
@@ -16,32 +20,30 @@ module ButtonHelper
   end
 
   def like_button
-    icon_tag("thumbs-up") + " Like"
+    buttoner("thumbs-up", "Like")
   end
 
   def dislike_button
-    icon_tag("thumbs-down") + " Dislike"
+    buttoner("thumbs-down", "Dislike")
   end
 
   def bookmark_button
-    icon_tag("bookmark") + " Bookmark"
+    buttoner("bookmark", "Bookmark")
   end
 
   def delete_button(have_text = true)
-    buttoner(icon_tag("trash"), "Delete", have_text)
+    buttoner("trash", "Delete", have_text)
   end
 
   def edit_button
-    icon_tag("edit") + " Change"
+    buttoner("edit", "Change")
   end
 
   def close_button(type)
     content_tag :button, icon_tag("remove-sign"), class: "close", data: dismiss(type)
   end
 
-  private
-
-  def buttoner(icon, text, have_text)
-    if have_text then "#{icon} #{text}" else icon end
+  def buttoner(icon, text = nil, have_text = true)
+    raw(have_text ? "#{icon_tag(icon)} #{text}" : icon_tag(icon))
   end
 end

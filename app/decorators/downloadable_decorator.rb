@@ -26,7 +26,7 @@ class DownloadableDecorator < Draper::Decorator
   end
 
   def images
-    if source.images.any? then source.images else ImagesNull.new end
+    if source.images.any? || new_record? then source.images else ImagesNull.new end
   end
 
   def description(limit = 10_000)
