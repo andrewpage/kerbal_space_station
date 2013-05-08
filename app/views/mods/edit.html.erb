@@ -1,6 +1,7 @@
 <%= breadcrumbs crumb("Mods", mods_path), crumb(@mod.name) %>
 
 <%= simple_form_for @mod, html: { class: "form-horizontal" } do |form| %>
+  <legend><h1>Edit Mod</h1></legend>
   <%= render partial: "form", locals: { form: form } %>
 
   <div class="form-actions">
