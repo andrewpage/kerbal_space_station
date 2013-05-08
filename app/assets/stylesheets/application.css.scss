@@ -8,17 +8,20 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap
- *= require bootstrap-responsive
- *= require font-awesome
- *= require chosen
- *= require bootstrap/tour
- *= require bootstrap/lightbox
- *= require bootstrap/fileupload
- *= require bootstrap/markdown
- *= require tagmanager
  *= require_self
  */
+
+ @import "spaceport";
+ @import "bootstrap";
+ @import "bootstrap-responsive";
+ @import "chosen";
+ @import "font-awesome";
+ @import "bootstrap/tour";
+ @import "bootstrap/lightbox";
+ @import "bootstrap/fileupload";
+ @import "bootstrap/markdown";
+ @import "tagmanager";
+
 
 body {
   padding-top: 60px;

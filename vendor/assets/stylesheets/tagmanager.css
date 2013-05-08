@@ -1,6 +1,5 @@
 .myTag {
   background: none repeat scroll 0 0 #dff0d8;
-  border: 1px solid #0088cc;
   border-radius: 3px 3px 3px 3px;
   color: #0088cc;
   display: block;
@@ -17,6 +16,7 @@
   -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
+
 .myTagError {
   background-color: #ee5f5b;
 }
