@@ -1,7 +1,7 @@
 class ModsController < ApplicationController
   before_filter :authenticate_account!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :find_mod, only: [:show, :ignore, :bookmark, :report, :like, :dislike, :download]
-
+  before_filter :extract_tags, only: [:create, :update]
   VALID_MOD_KEYS = [:name, :upload, :images_attributes, :install, :description, :changelog, :version, :compatible, :license, :source, :tags]
 
   def index
@@ -115,5 +115,10 @@ class ModsController < ApplicationController
     end
     flash[:notice] = "You've #{type}d #{@mod.name}."
     redirect_to :back
+  end
+
+  def extract_tags
+    tags = params.delete("hidden-mod")[:tags].split(",")
+    params[:mod][:tags] = tags.map(&method(:name_to_tag))
   end
 end
