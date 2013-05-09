@@ -1,9 +1,29 @@
 <ul class="nav nav-list well">
-  <li class="nav-header">Recently Updated Mods</li>
-  <%= render partial: "sidebar_mod", collection: @updated_mods %>
-  <li class="divider"></li>
-  <li class="nav-header">Newest Mods</li>
-  <%= render partial: "sidebar_mod", collection: @newest_mods %>
-  <li class="divider"></li>
-  <%= render partial: "sidebar_account_mods" if account_signed_in? %>
+  <% unless @updated_mods.blank? %>
+    <li class="nav-header">Updated Mods</li>
+    <%= render partial: "sidebar_downloadable", collection: @updated_mods %>
+  <% end %>
+
+  <% unless @newest_mods.blank? %>
+    <li class="divider"></li>
+    <li class="nav-header">Newest Mods</li>
+    <%= render partial: "sidebar_downloadable", collection: @newest_mods %>
+  <% end %>
+
+  <% unless @updated_crafts.blank? %>
+    <li class="divider"></li>
+    <li class="nav-header">Updated Crafts</li>
+    <%= render partial: "sidebar_downloadable", collection: @updated_crafts %>
+  <% end %>
+
+  <% unless @newest_crafts.blank? %>
+    <li class="divider"></li>
+    <li class="nav-header">Newest Mods</li>
+    <%= render partial: "sidebar_downloadable", collection: @newest_crafts %>
+  <% end %>
+
+  <% if account_signed_in? %>
+    <li class="divider"></li>
+    <%= render partial: "sidebar_account"  %>
+  <% end %>
 </ul>

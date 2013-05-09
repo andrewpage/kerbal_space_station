@@ -2,8 +2,8 @@
 <%= form.input :name, required: true, input_html: { class: "span6" } %>
 <%= form.input :version, placeholder: "1.0.0", required: true, input_html: { class: "span6" } %>
 <%= form.input :compatible, label: "KSP Version", collection: KSP_VERSIONS, input_html: { class: "chzn-select span6" } %>
-<%= form.input :source, placeholder: "http://github.com/username/reponame", input_html: { class: "span6" }  %>
-<%= form.input :tags, placeholder: "one, two, three" %>
+<%= form.input :source, as: :string, placeholder: "http://github.com/username/reponame", input_html: { class: "span6" }  %>
+<%= form.input :tag_names, placeholder: "one, two, three" %>
 <%= form.input :description, required: true, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
 <%= form.input :install, label: "Install Guide", input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>
 <%= form.input :changelog, input_html: { class: "span12", rows: 6, data: { provide: "markdown" } } %>

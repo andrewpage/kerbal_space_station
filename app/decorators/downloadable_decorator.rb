@@ -1,12 +1,8 @@
 class DownloadableDecorator < Draper::Decorator
   delegate_all
 
-  def tags
-    if source.tags.any?
-      source.tags.map(&:name).join(",")
-    else
-      nil
-    end
+  def tag_names
+    source.tags.map(&:name).join(",") if source.tags.any?
   end
 
   def liked_style

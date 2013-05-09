@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
   def newest_mods
     @newest_mods = Mod.order(:created_at).limit(10).decorate
   end
+
+  def updated_crafts
+    @updated_crafts = Craft.order(:updated_at).limit(10).decorate
+  end
+
+  def newest_crafts
+    @newest_crafts = Craft.order(:created_at).limit(10).decorate
+  end
 end

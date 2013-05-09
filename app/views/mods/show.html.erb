@@ -1,17 +1,17 @@
-<%= breadcrumbs crumb("Mods", mods_path), crumb(@mod.name) %>
+<%= breadcrumbs crumb("Mods", mods_path), crumb(@downloadable.name) %>
 
 <article>
   <header class="page-header">
     <h1>
-      <%= @mod.name %>
-      <small>by <%= @mod.account.username %></small>
+      <%= @downloadable.name %>
+      <small>by <%= @downloadable.account.username %></small>
     </h1>
   </header>
-  <%= render partial: "thumbs", locals: { images: @mod.images, primary: @mod.images.shift } %>
-  <%= render partial: "actions", locals: { mod: @mod } %>
+  <%= render partial: "thumbs", locals: { images: @downloadable.images, primary: @downloadable.images.shift } %>
+  <%= render partial: "actions", locals: { mod: @downloadable } %>
   <br>
-  <%= render partial: "stats", locals: { mod: @mod } %>
-  <%= render partial: "tags", locals: { tags: @mod.tags } %>
+  <%= render partial: "stats", locals: { mod: @downloadable } %>
+  <%= render partial: "tags", locals: { tags: @downloadable.source.tags } %>
   <br>
-  <%= render partial: "content", locals: { mod: @mod } %>
+  <%= render partial: "content", locals: { mod: @downloadable } %>
 </article>

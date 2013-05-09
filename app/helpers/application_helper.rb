@@ -97,6 +97,6 @@ module ApplicationHelper
   end
 
   def mod_names
-    @mod_names ||= Downloadable.pluck(:name)
+    @downloadable_names ||= Downloadable.pluck(:name)
   end
 end

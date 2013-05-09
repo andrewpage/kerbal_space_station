@@ -3,8 +3,8 @@ class Downloadable < ActiveRecord::Base
   include Tire::Model::Callbacks
 
   belongs_to :account
-  has_many :images, dependent: :destroy, order: :id
-  has_and_belongs_to_many :tags
+  has_many :images, dependent: :destroy, order: :id, uniq: true
+  has_and_belongs_to_many :tags, uniq: true
 
   mapping do
     indexes :name, boost: 10
@@ -34,5 +34,9 @@ class Downloadable < ActiveRecord::Base
     tire.search(load: true) do
       query { string q, default_operator: "AND" } if q.present?
     end
+  end
+
+  def self.type(type_name)
+    where(type: type_name)
   end
 end
