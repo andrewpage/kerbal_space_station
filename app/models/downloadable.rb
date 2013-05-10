@@ -11,12 +11,12 @@ class Downloadable < ActiveRecord::Base
 
   has_paper_trail on: [:create, :update], only: :version, skip: VERSION_SKIP_FIELDS, versions: :releases, version: :release
 
+  index_name INDEX_NAME
+
   mapping do
     indexes :name, boost: 10
     indexes :description # analyzer: 'snowball'
   end
-
-  index_name INDEX_NAME
 
   accepts_nested_attributes_for :images
 
