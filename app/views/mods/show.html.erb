@@ -2,12 +2,11 @@
 
 <article>
   <header class="page-header">
-    <h1>
+    <h2>
       <%= @downloadable.name %>
       <small>by <%= @downloadable.account.username %></small>
-    </h1>
+    </h2>
   </header>
-  <%= render partial: "thumbs", locals: { images: @downloadable.images, primary: @downloadable.images.shift } %>
   <%= render partial: "actions", locals: { mod: @downloadable } %>
   <br>
   <%= render partial: "stats", locals: { mod: @downloadable } %>
