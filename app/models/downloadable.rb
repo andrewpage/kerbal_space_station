@@ -2,9 +2,14 @@ class Downloadable < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  VERSION_SKIP_FIELDS = [:description, :tags, :source, :images, :bookmark_count, :download_count, :name]
+
   belongs_to :account
+
   has_many :images, dependent: :destroy, order: :id, uniq: true
   has_and_belongs_to_many :tags, uniq: true
+
+  has_paper_trail on: [:create, :update], only: :version, skip: VERSION_SKIP_FIELDS, versions: :releases, version: :release
 
   mapping do
     indexes :name, boost: 10
