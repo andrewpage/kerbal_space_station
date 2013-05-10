@@ -1,5 +1,6 @@
 <% if account_signed_in? %>
   <li><%= link_to icon_tag("cogs"), edit_account_registration_path %></li>
+  <li><%= link_to "Sign Out", destroy_account_session_path, method: :delete %></li>
 <% else %>
   <li id="signup"><%= link_to "Sign Up", new_account_registration_path %></li>
   <li id="signin"><%= link_to "Sign In", new_account_session_path %></li>
