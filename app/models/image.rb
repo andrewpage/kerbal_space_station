@@ -10,15 +10,15 @@ class Image < ActiveRecord::Base
     image.to_s
   end
 
+  def large
+    image.large
+  end
+
   def medium
     image.medium
   end
 
-  def thumb
-    image.thumb
-  end
-
-  def carousel
-    image.carousel
+  def thumbnail
+    image.thumbnail
   end
 end

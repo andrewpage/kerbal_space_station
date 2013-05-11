@@ -1,12 +1,12 @@
 <div class="primary">
-  <%= link_to image_tag(primary), "##{primary.class}_#{primary.id}" %>
+  <%= link_to image_tag(primary.large), "##{primary.class}_#{primary.id}" %>
   <%= render partial: "lightbox", object: primary, as: :resource %>
 </div>
 
 <ul class="thumbnails">
   <% images.each do |image| %>
     <li class="span4">
-      <%= thumblink image_tag(image), "##{image.class}_#{image.id}" %>
+      <%= thumblink image_tag(image.medium), "##{image.class}_#{image.id}" %>
     </li>
     <%= render partial: "lightbox", object: image, as: :resource %>
   <% end if images.any? %>
