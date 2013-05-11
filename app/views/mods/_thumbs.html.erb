@@ -1,8 +1,8 @@
+<div class="primary">
+  <%= link_to image_tag(primary), "##{primary.class}_#{primary.id}" %>
+  <%= render partial: "lightbox", object: primary, as: :resource %>
+</div>
 
-<%= link_to image_tag(primary), "##{primary.class}_#{primary.id}" %>
-<%= render partial: "lightbox", object: primary, as: :resource %>
-<br>
-<br>
 <ul class="thumbnails">
   <% images.each do |image| %>
     <li class="span4">
