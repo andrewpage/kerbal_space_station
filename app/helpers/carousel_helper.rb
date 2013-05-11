@@ -1,6 +1,10 @@
 module CarouselHelper
   def carousel(resources)
-    render partial: "carousel", locals: { resources: resources }
+    if resources.any?
+      render partial: "carousel", locals: { resources: resources }
+    else
+      render partial: "alert_box", locals: { message: "There is nothing we have to show currently, sorry!" }
+    end
   end
 
   def active_item?(item, active)
