@@ -1,9 +1,2 @@
 <li class="nav-header">Your Downloadables</li>
 <%= render partial: "sidebar_downloadable", collection: current_account.downloadables.select(&:persisted?) %>
-<li class="divider"></li>
-<li>
-  <div class="pull-center">
-    <%= button_to buttoner("upload", "Upload Mod"), new_mod_path, class: "btn-block" %>
-    <%= button_to buttoner("upload", "Upload Craft"), new_mod_path, class: "btn-block" %>
-  </div>
-</li>

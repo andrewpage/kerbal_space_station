@@ -23,7 +23,15 @@
   <% end %>
 
   <% if account_signed_in? %>
-    <li class="divider"></li>
-    <%= render partial: "sidebar_account"  %>
+    <% if current_account.downloadables.any? %>
+      <li class="divider"></li>
+      <%= render partial: "sidebar_account"  %>
+    <% end %>
+    <li>
+      <div class="pull-center">
+        <%= button_to buttoner("upload", "Upload Mod"), new_mod_path, class: "btn-block" %>
+        <%= button_to buttoner("upload", "Upload Craft"), new_craft_path, class: "btn-block" %>
+      </div>
+    </li>
   <% end %>
 </ul>
