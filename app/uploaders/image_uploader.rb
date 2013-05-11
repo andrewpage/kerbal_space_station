@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :fog
 
   def store_dir
-    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{Rails.env}/#{mounted_as}/#{model.id}"
   end
 
   process :resize_to_fit => [800, 600]
