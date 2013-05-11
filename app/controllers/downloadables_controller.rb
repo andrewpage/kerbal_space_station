@@ -15,7 +15,7 @@ class DownloadablesController < ApplicationController
   end
 
   def create
-    @downloadable = current_account.send(contexts).build(valid_parameters)
+    @downloadable = current_account.send(contexts).build(valid_params)
     form = DownloadableTagForm.new(@downloadable, params[context][:tags])
     if form.valid?
       form.save!
@@ -33,7 +33,7 @@ class DownloadablesController < ApplicationController
   end
 
   def update
-    @downloadable.assign_attributes(valid_paramters)
+    @downloadable.assign_attributes(valid_params)
     form = DownloadableTagForm.new(@downloadable, params[context][:tags])
     if form.valid?
       form.save!
@@ -121,7 +121,7 @@ class DownloadablesController < ApplicationController
     context.capitalize
   end
 
-  def valid_paramters
+  def valid_params
     params[context].slice(*type.constantize::VALID_PARAMS)
   end
 end
