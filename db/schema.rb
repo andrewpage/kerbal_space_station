@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20130510055238) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.string   "upload"
-    t.integer  "download_count"
+    t.integer  "download_count", :default => 0
     t.integer  "bookmark_count", :default => 0
     t.string   "source"
     t.text     "license"
