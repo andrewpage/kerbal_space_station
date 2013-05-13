@@ -1,26 +1,19 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- */
+//= require bootstrap
+//= require bootstrap-responsive
+//= require chosen
+//= require font-awesome
+//= require tagmanager
+//= require bootstrap/tour
+//= require bootstrap/lightbox
+//= require bootstrap/fileupload
+//= require bootstrap/markdown
+//= require patches/bootstrap
+//= require_self
 
- @import "bootstrap";
- @import "bootstrap-responsive";
- @import "chosen";
- @import "font-awesome";
- @import "bootstrap/tour";
- @import "bootstrap/lightbox";
- @import "bootstrap/fileupload";
- @import "bootstrap/markdown";
- @import "tagmanager";
-
+$white: #ecf0f1;
+$green: #2ecc71;
+$red: #e74c3c;
+$blue: #2980b9;
 
 body {
   padding-top: 60px;
@@ -38,7 +31,30 @@ body {
     width: 100%;
     margin: 10px 0px;
   }
+
+  .navbar .navbar-inner {
+    background-color: $blue;
+    background-image: none;
+    border-color: $blue;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .btn {
+    background-image: none;
+  }
+
+  a {
+    color: $blue;
+  }
+
+  .well {
+    background-color: $white;
+  }
 }
+
 
 
 
