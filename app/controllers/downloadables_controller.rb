@@ -1,6 +1,6 @@
 class DownloadablesController < ApplicationController
   before_filter :authenticate_account!, only: [:new, :create, :edit, :update, :destroy]
-  before_filter :find_downloadable, only: [:show, :edit, :update, :ignore, :bookmark, :report, :like, :dislike, :download]
+  before_filter :find_downloadable, only: [:show, :edit, :update, :destroy, :ignore, :bookmark, :like, :dislike, :download]
 
   def index
     @downloadables = Downloadable.type(type).order(:created_at).decorate
@@ -10,73 +10,47 @@ class DownloadablesController < ApplicationController
   end
 
   def new
-    @downloadable = current_account.send(contexts).build.decorate
-    3.times { @downloadable.images.build }
+    @_downloadable = current_account.send(contexts).build.decorate and build_images
   end
 
   def create
-    @downloadable = current_account.send(contexts).build(valid_params)
-    form = DownloadableTagForm.new(@downloadable, params[context][:tags])
-    if form.valid?
-      form.save!
-      flash[:notice] = "Your #{context} has been saved!"
-      redirect_to(@downloadable)
-    else
-      report_errors(@downloadable)
-      (3 - @downloadable.images.size).times { @downloadable.images.build }
-      render(:new)
-    end
+    @_downloadable = current_account.send(contexts).build(valid_params)
+    persist_or_render(:new)
   end
 
   def edit
-    (3 - @downloadable.images.size).times { @downloadable.images.build }
+    build_images(@_downloadable.images.size)
   end
 
   def update
-    @downloadable.assign_attributes(valid_params)
-    form = DownloadableTagForm.new(@downloadable, params[context][:tags])
-    if form.valid?
-      form.save!
-      flash[:notice] = "Your #{context} has been saved!"
-      redirect_to(@downloadable)
-    else
-      report_errors(@downloadable)
-      (3 - @downloadable.images.size).times { @downloadable.images.build }
-      render(:edit)
-    end
+    @_downloadable.assign_attributes(valid_params)
+    persist_or_render(:edit)
   end
 
   def destroy
-    @downloadable.destroy
+    @_downloadable.destroy
     flash[:notice] = "You've deleted #{@downloadable.name}."
     redirect_to url_for(controller: contexts, action: :index)
   end
 
   def like
-    vote(:like, @downloadable)
+    vote(:like, @_downloadable)
   end
 
   def dislike
-    vote(:dislike, @downloadable)
+    vote(:dislike, @_downloadable)
   end
 
-  # def report
-  #   @downloadable.reported_by(current_account)
-  #   flash.now[:notice] = "Thanks for reporting this upload! We'll check it out."
-  #   redirect_to :back
-  # end
-
-  # Use for update emails
   def bookmark
-    unless current_account.bookmarks?(@downloadable)
-      current_account.bookmark(@downloadable)
+    unless current_account.bookmarks?(@_downloadable)
+      current_account.bookmark(@_downloadable)
       current_account.increment!(:bookmark_count)
+      redirect_back_and_flash "bookmarked", @downloadable
     else
-      current_account.unbookmark(@downloadable)
+      current_account.unbookmark(@_downloadable)
       current_account.decrement!(:bookmark_count)
+      redirect_back_and_flash "unbookmarked", @downloadable
     end
-    flash[:notice] = "You've bookmarked #{@downloadable.name}."
-    redirect_to :back
   end
 
   private
@@ -87,17 +61,7 @@ class DownloadablesController < ApplicationController
     else
       current_account.send(:"un#{choice}", downloadable)
     end
-    flash[:notice] = "You've #{choice}d #{downloadable.name}."
-    redirect_to :back
-  end
-
-  def report_errors(resource)
-    Rails.logger.warn("Something went wrong:")
-    resource.errors.full_messages.each(&method(:error_line))
-  end
-
-  def error_line(error)
-    Rails.logger.warn("\n  * #{error}")
+    redirect_back_and_flash("#{choice}d", downloadable)
   end
 
   def find_downloadable
@@ -123,5 +87,25 @@ class DownloadablesController < ApplicationController
 
   def valid_params
     params[context].slice(*type.constantize::VALID_PARAMS)
+  end
+
+  def build_images(number = 3)
+    (3 - number).times { @_downloadable.images.build }
+  end
+
+  def redirect_back_and_flash(action, resource)
+    flash[:notice] = "You've #{action} #{resource.name}." and redirect_to :back
+  end
+
+  def persist_or_render(failed_view)
+    form = DownloadableTagForm.new(@_downloadable, params[context][:tags])
+    if form.valid?
+      form.save!
+      flash[:notice] = "Your #{context} has been saved!"
+      redirect_to(@_downloadable)
+    else
+      report_errors(@_downloadable) and build_images(@_downloadable.images.size)
+      render(failed_view)
+    end
   end
 end

@@ -30,4 +30,13 @@ class ApplicationController < ActionController::Base
   def newest_crafts
     @newest_crafts = Craft.order(:created_at).limit(10).decorate
   end
+
+  def report_errors(resource)
+    Rails.logger.warn("Something went wrong:")
+    resource.errors.full_messages.each(&method(:error_line))
+  end
+
+  def error_line(error)
+    Rails.logger.warn("\n  * #{error}")
+  end
 end
