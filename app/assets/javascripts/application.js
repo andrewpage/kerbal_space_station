@@ -25,9 +25,16 @@
 
 $(function() {
   $("[data-toggle=tooltip]").tooltip();
+
   $(".chzn-select").chosen();
+
   $("#mod_tag_names").tagsManager({
     prefilled: $("#mod_tag_names").val(),
     hiddenTagListName: "mod[tags]"
+  });
+
+  $("#craft_tag_names").tagsManager({
+    prefilled: $("#craft_tag_names").val(),
+    hiddenTagListName: "craft[tags]"
   });
 })
