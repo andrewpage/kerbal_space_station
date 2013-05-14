@@ -1,0 +1,11 @@
+<%= breadcrumbs crumb("Crafts", crafts_path), crumb("New Craft") %>
+
+<%= simple_form_for @downloadable, html: { class: "form-horizontal" } do |form| %>
+  <legend><h1>New Craft</h1></legend>
+  <%= render partial: "form", locals: { form: form } %>
+
+  <div class="form-actions">
+    <%= form.filepicker_field :upload, @downloadable.filepicker_options %>
+    <%= form.button :submit, class: "btn-primary" %>
+  </div>
+<% end %>
