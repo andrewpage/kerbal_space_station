@@ -5,7 +5,7 @@
   <%= render partial: "form", locals: { form: form } %>
 
   <div class="form-actions">
-    <%= form.filepicker_field :upload, filepicker_field_options %>
+    <%= form.filepicker_field :upload, @downloadable.filepicker_options %>
     <%= form.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
