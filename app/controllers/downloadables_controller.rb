@@ -96,7 +96,7 @@ class DownloadablesController < ApplicationController
     params[context].slice(*type.constantize::VALID_PARAMS)
   end
 
-  def build_images(number = 3)
+  def build_images(number = 0)
     (3 - number).times { @_downloadable.images.build }
   end
 
