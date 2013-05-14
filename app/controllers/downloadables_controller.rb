@@ -10,7 +10,8 @@ class DownloadablesController < ApplicationController
   end
 
   def new
-    @_downloadable = current_account.send(contexts).build.decorate and build_images
+    @_downloadable = current_account.send(contexts).build and build_images
+    @downloadable = @_downloadable.decorate
   end
 
   def create
