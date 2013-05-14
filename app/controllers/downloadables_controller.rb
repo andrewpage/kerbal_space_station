@@ -75,8 +75,9 @@ class DownloadablesController < ApplicationController
     unless @_downloadable.present?
       flash[:alert] = "That #{@_downloadable} either no longer exists or never existed."
       redirect_to url_for(controller: contexts, action: :index)
+    else
+      @downloadable = @_downloadable.decorate if @_downloadable
     end
-    @downloadable = @_downloadable.decorate if @_downloadable
   end
 
   def contexts
