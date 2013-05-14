@@ -54,6 +54,11 @@ class DownloadablesController < ApplicationController
     end
   end
 
+  def download
+    @_downloadable.increment!(:download_count)
+    redirect_to @downloadable.download
+  end
+
   private
 
   def vote(choice, downloadable)
