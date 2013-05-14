@@ -7,4 +7,5 @@ class Mod < Downloadable
 
   attr_accessible :changelog
   attr_accessible :install
+  attr_accessible :source
 end
