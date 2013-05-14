@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
 
   has_many :downloadables
   has_many :mods
+  has_many :crafts
 
   recommends :downloadables
 
