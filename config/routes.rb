@@ -29,11 +29,6 @@ KerbalSpaceStation::Application.routes.draw do
     resources :documentations
   end
 
-  get "/contact" => "pages#contact", as: :contact
-  get "/security" => "pages#about", as: :security
-  get "/privacy" => "pages#privacy", as: :privacy
-  get "/tos" => "pages#tos", as: :tos
-  get "/about" => "pages#about", as: :about
   get "/search" => "pages#search", as: :search
 
   root to: "pages#splash"
