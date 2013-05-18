@@ -54,7 +54,7 @@ class DownloadablesController < ApplicationController
 
   def download
     @_downloadable.increment!(:download_count)
-    redirect_to @downloadable.download
+    redirect_to @downloadable.upload
   end
 
   private
