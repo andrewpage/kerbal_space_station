@@ -34,7 +34,6 @@ class DownloadableDecorator < Draper::Decorator
   end
 
   def install
-    h.raw Markdowner.new(source.install).render!
     h.raw Markdowner.new(source.install || "").render!
   end
 
