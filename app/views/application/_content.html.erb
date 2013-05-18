@@ -3,16 +3,16 @@
     <%= link_to buttoner("picture", "Gallery"), "#gallery", data: toggle("tab") %>
   </li>
   <li>
-    <%= link_to buttoner("quote-left", "Description"), "#description", data: toggle("tab") %>
+    <%= link_to buttoner("quote-left", "Description"), "#description", data: toggle("tab") if downloadable.description %>
   </li>
   <li>
-    <%= link_to buttoner("download-alt", "Installing"), "#installing", data: toggle("tab") %>
+    <%= link_to buttoner("download-alt", "Installing"), "#installing", data: toggle("tab") if downloadable.install %>
   </li>
   <li>
-    <%= link_to buttoner("list", "Changelog"), "#changelog", data: toggle("tab") %>
+    <%= link_to buttoner("list", "Changelog"), "#changelog", data: toggle("tab") if downloadable.changelog %>
   </li>
   <li>
-    <%= link_to buttoner("legal", "License"), "#license", data: toggle("tab") %>
+    <%= link_to buttoner("legal", "License"), "#license", data: toggle("tab") if downloadable.license %>
   </li>
   <li>
     <%= link_to buttoner("comments", "Comments"), "#comments", data: toggle("tab") %>
@@ -20,19 +20,19 @@
 </ul>
 <div id="content" class="tab-content">
   <div class="tab-pane fade active in" id="gallery">
-    <%= render partial: "thumbs", locals: { images: @downloadable.images, primary: @downloadable.images.shift } %>
+    <%= render partial: "thumbs", locals: { images: downloadable.images, primary: downloadable.images.shift } %>
   </div>
   <div class="tab-pane fade" id="description">
-    <%= raw mod.description %>
+    <%= raw downloadable.description %>
   </div>
   <div class="tab-pane fade" id="installing">
-    <%= raw mod.install %>
+    <%= raw downloadable.install %>
   </div>
   <div class="tab-pane fade" id="changelog">
-    <%= raw mod.changelog %>
+    <%= raw downloadable.changelog %>
   </div>
   <div class="tab-pane fade" id="license">
-    <%= raw mod.license %>
+    <%= raw downloadable.license %>
   </div>
   <div class="tab-pane fade" id="comments">
     <%= render partial: "disqus" %>

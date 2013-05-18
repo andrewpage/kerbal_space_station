@@ -1,0 +1,16 @@
+<div class="pull-center">
+  <div class="btn-group">
+    <%= button_to download_button, downloadable.url(:download), class: "btn-primary" %>
+    <%= button_to version_button(downloadable), "#", class: "disabled" %>
+    <%= button_to compatible_button(downloadable), "#", class: "disabled" %>
+    <% if account_signed_in? %>
+      <%= button_to like_button, downloadable.url(:like), class: downloadable.liked_style %>
+      <%= button_to dislike_button, downloadable.url(:dislike), class: downloadable.disliked_style %>
+      <%= button_to bookmark_button, downloadable.url(:bookmark), class: downloadable.bookmarked_style %>
+      <% if current_account.owner?(downloadable) %>
+        <%= button_to edit_button, downloadable.url(:edit) %>
+      <% end %>
+        <%= button_to delete_button, downloadable, confirm: 'Are you sure?', method: :delete, class: "btn-danger" %>
+    <% end %>
+  </div>
+</div>
