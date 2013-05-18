@@ -15,8 +15,7 @@ class DownloadablesController < ApplicationController
   end
 
   def create
-    @_downloadable = current_account.send(contexts).build(valid_params)
-    persist_or_render(:new)
+    persist_or_render(current_account.send(contexts).build, :new)
   end
 
   def edit
@@ -24,8 +23,7 @@ class DownloadablesController < ApplicationController
   end
 
   def update
-    @_downloadable.assign_attributes(valid_params)
-    persist_or_render(:edit)
+    persist_or_render(@_downloadable, :edit)
   end
 
   def destroy
@@ -104,8 +102,9 @@ class DownloadablesController < ApplicationController
     flash[:notice] = "You've #{action} #{resource.name}." and redirect_to :back
   end
 
-  def persist_or_render(failed_view)
-    form = DownloadableTagForm.new(@_downloadable, params[context][:tags])
+  def persist_or_render(downloadable, failed_view)
+    form = DownloadableTagForm.new(downloadable, valid_params)
+    @_downloadable = form.downloadable
     if form.valid?
       form.save!
       flash[:notice] = "Your #{context} has been saved!"
@@ -114,5 +113,6 @@ class DownloadablesController < ApplicationController
       report_errors(@_downloadable) and build_images(@_downloadable.images.size)
       render(failed_view)
     end
+    @downloadable = @_downloadable.decorate
   end
 end
