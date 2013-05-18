@@ -7,6 +7,8 @@ class PagesController < ApplicationController
   end
 
   def search
-    @downloadables = ModDecorator.decorate_collection(Mod.search(params[:q]).to_a)
+    mods = Mod.search(params[:q]).to_a
+    crafts = Craft.search(params[:q]).to_a
+    @downloadables = (mods + crafts).map(&:decorate)
   end
 end
