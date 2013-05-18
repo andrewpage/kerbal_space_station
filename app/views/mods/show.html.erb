@@ -7,10 +7,10 @@
       <small>by <%= @downloadable.account.username %></small>
     </h2>
   </header>
-  <%= render partial: "actions", locals: { mod: @downloadable } %>
+  <%= render partial: "actions", locals: { downloadable: @downloadable } %>
   <br>
-  <%= render partial: "stats", locals: { mod: @downloadable } %>
+  <%= render partial: "stats", locals: { downloadable: @downloadable } %>
   <%= render partial: "tags", locals: { tags: @downloadable.source.tags } %>
   <br>
-  <%= render partial: "content", locals: { mod: @downloadable } %>
+  <%= render partial: "content", locals: { downloadable: @downloadable } %>
 </article>
