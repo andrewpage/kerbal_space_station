@@ -1,0 +1,16 @@
+<%= breadcrumbs crumb("Crafts", mods_path), crumb(@downloadable.name) %>
+
+<article>
+  <header class="page-header">
+    <h2>
+      <%= @downloadable.name %>
+      <small>by <%= @downloadable.account.username %></small>
+    </h2>
+  </header>
+  <%= render partial: "actions", locals: { downloadable: @downloadable } %>
+  <br>
+  <%= render partial: "stats", locals: { downloadable: @downloadable } %>
+  <%= render partial: "tags", locals: { tags: @downloadable.source.tags } %>
+  <br>
+  <%= render partial: "content", locals: { downloadable: @downloadable } %>
+</article>
