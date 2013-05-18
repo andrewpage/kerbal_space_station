@@ -1,6 +1,15 @@
 class Craft < Downloadable
-  VALID_PARAMS = [:name, :file, :images_attributes, :description, :compatible, :tags]
   validates :file, presence: true, on: :create
 
   attr_accessible :file
+  VALID_PARAMS = [
+    :name,
+    :version,
+    :compatible,
+    :description,
+    :license,
+    :tags,
+    :upload,
+    :images_attributes,
+  ]
 end
