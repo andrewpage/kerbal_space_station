@@ -53,7 +53,7 @@ class DownloadableDecorator < Draper::Decorator
     end
   end
 
-  def url(action, member = false)
+  def url(action, member = true)
     { controller: controller, action: action }.tap { |h| h.merge!(id: id) if member}
   end
 
