@@ -53,4 +53,12 @@ class DownloadableDecorator < Draper::Decorator
       "No"
     end
   end
+
+  def url(action, member = false)
+    { controller: controller, action: action }.tap { |h| h.merge!(id: id) if member}
+  end
+
+  def controller
+    type.downcase.pluralize
+  end
 end
