@@ -30,19 +30,20 @@ class DownloadableDecorator < Draper::Decorator
   end
 
   def description
-    h.raw Markdowner.new(source.description).render!
+    h.raw Markdowner.new(source.description || "").render!
   end
 
   def install
     h.raw Markdowner.new(source.install).render!
+    h.raw Markdowner.new(source.install || "").render!
   end
 
   def changelog
-    h.raw Markdowner.new(source.changelog).render!
+    h.raw Markdowner.new(source.changelog || "").render!
   end
 
   def license
-    h.raw Markdowner.new(source.license).render!
+    h.raw Markdowner.new(source.license || "").render!
   end
 
   def license_name
