@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     Account
     @view_full = true
     downloadables = if Downloadable.top(3).any? then Downloadable.top(3) else Downloadable.limit(3) end
-    @top = ModDecorator.decorate_collection(downloadables)
+    @top = downloadables.decorate
   end
 
   def search
