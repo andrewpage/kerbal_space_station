@@ -25,7 +25,7 @@ class DownloadableDecorator < Draper::Decorator
     if source.images.any? || new_record? then source.images else ImagesNull.new end
   end
 
-  def description_short(limit)
+  def short(limit)
     h.raw Markdowner.new(source.description.split("\n").first.truncate(limit)).render!
   end
 

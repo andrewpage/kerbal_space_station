@@ -1,12 +1,10 @@
 <div class="item <%= active_item?(carousel_item, active) %>">
-  <%= link_to image_tag(carousel_item.primary_image), carousel_item %>
+  <%= link_to image_tag(carousel_item.primary_image), carousel_item.url(:show, true) %>
   <div class="carousel-caption">
     <h4>
-      <%= link_to carousel_item do %>
-        <%= carousel_item.name %>
-      <% end %>
-      <small>by <%= carousel_item.account.username %></small>
+      <%= link_to carousel_item.name, carousel_item.url(:show, true) %>
+      <small> by <%= carousel_item.account.username %></small>
     </h4>
-    <p><%= carousel_item.description_short(150) %></p>
+    <p><%= carousel_item.short(150) %></p>
   </div>
 </div>

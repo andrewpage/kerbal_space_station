@@ -2,7 +2,7 @@
   <h4 style="text-align: center">
     <%= link_to thumbnail_caption.name, thumbnail_caption %>
   </h4>
-  <%= thumbnail_caption.description_short(150) %>
+  <%= thumbnail_caption.short(150) %>
   <div class="pull-center">
     <div class="btn-group">
       <%= button_to download_button, download_mod_path(thumbnail_caption), class: "btn-primary" %>
