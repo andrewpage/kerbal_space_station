@@ -43,11 +43,11 @@ class DownloadablesController < ApplicationController
   def bookmark
     unless current_account.bookmarks?(@_downloadable)
       current_account.bookmark(@_downloadable)
-      current_account.increment!(:bookmark_count)
+      @_downloadable.increment!(:bookmark_count)
       redirect_back_and_flash "bookmarked", @downloadable
     else
       current_account.unbookmark(@_downloadable)
-      current_account.decrement!(:bookmark_count)
+      @_downloadable.decrement!(:bookmark_count)
       redirect_back_and_flash "unbookmarked", @downloadable
     end
   end
