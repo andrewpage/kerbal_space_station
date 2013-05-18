@@ -1,5 +1,4 @@
 class Mod < Downloadable
-  MAXIMUM_IMAGES = 3
   VALID_PARAMS = [
     :name,
     :version,

@@ -1,4 +1,5 @@
 class Downloadable < ActiveRecord::Base
+  MAXIMUM_IMAGES = 3
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
