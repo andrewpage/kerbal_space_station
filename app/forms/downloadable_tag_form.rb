@@ -1,11 +1,12 @@
 class DownloadableTagForm
   attr_accessor :downloadable
-  attr_accessor :tags
+  attr_writer :tags
 
-  def initialize(downloadable, tag_names)
+  def initialize(downloadable, parameters)
     self.downloadable = downloadable
-    self.tags = tags_from(tag_names)
-    self.downloadable.tags << self.tags
+    self.tags = parameters.delete("tags")
+    self.downloadable.assign_attributes(parameters)
+    self.downloadable.tags << tags
   end
 
   def valid?
@@ -13,12 +14,10 @@ class DownloadableTagForm
   end
 
   def save!
-    downloadable.save! and tags.all?(&:save!)
+    downloadable.save!
   end
 
-  private
-
-  def tags_from(names)
-    names.split(/,\s*/).map { |name| Tag.where(name: name).first_or_initialize }
+  def tags
+    @tags.split(/,\s*/).map { |name| Tag.where(name: name).first_or_initialize }
   end
 end
