@@ -31,6 +31,7 @@ gem "kaminari-bootstrap", "~> 0.1"
 gem "redcarpet", "~> 2.2"
 gem "paper_trail", "~> 2.0"
 gem "cloudinary", "~> 1.0"
+gem "valium", "~> 0.5"
 # gem "authority", "~> 2.0"
 
 
