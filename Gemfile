@@ -39,6 +39,7 @@ group :production, :staging do
   gem "dalli", "~> 2.0"
   gem "memcachier", "~> 0.0.2"
   gem "newrelic_rpm", "~> 3.0"
+  gem "autoscaler", "~> 0.3"
 end
 
 group :development, :test do
